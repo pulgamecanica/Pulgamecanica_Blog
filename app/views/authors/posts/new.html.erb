@@ -1,0 +1,13 @@
+<%= link_to 'Back', posts_path, class: 'btn btn-lg btn-dark mb-3' %>
+<div class="row text-center">
+  <div class="col-md-4 m-auto">
+    <div class="card">
+      <div class="card-header">
+        <h6 class="card-title mb-0">New Post</h6>
+      </div>
+      <div class="card-body">
+        <%= render 'form', post: @post %>
+      </div>
+    </div>
+  </div>  
+</div>
