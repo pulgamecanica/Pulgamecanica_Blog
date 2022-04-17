@@ -93,5 +93,5 @@ Rails.application.configure do
 
   # SCSSC
   # config.assets.css_compressor = :yui
-  config.assets.js_compressor = :terser
+  # config.assets.js_compressor = :terser
 end
