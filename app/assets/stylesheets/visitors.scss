@@ -1,0 +1,393 @@
+@font-face {
+   font-family: 'AdventPro Regular';
+   src: url('AdventPro-Regular.ttf');
+}
+
+@font-face {
+   font-family: 'AdventPro Bold';
+   src: url('AdventPro-Bold.ttf');
+}
+
+@font-face {
+   font-family: 'AdventPro ExtraLight';
+   src: url('AdventPro-ExtraLight.ttf');
+}
+
+@font-face {
+   font-family: 'AdventPro Medium';
+   src: url('AdventPro-Medium.ttf');
+}
+
+@font-face {
+   font-family: 'AdventPro SemiBold';
+   src: url('AdventPro-SemiBold.ttf');
+}
+
+@font-face {
+   font-family: 'AdventPro Thin';
+   src: url('AdventPro-Thin.ttf');
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	min-height: 90vh;
+}
+
+
+.bg-light {
+	background-color: rgb(248,249,250);
+}
+
+#visitors-layout {
+	font-family: "AdventPro Medium";
+	font-size: 150%;
+	> nav {
+		position: fixed;
+		background-color:rgb(25,55,71);
+		color: rgba(255,255,255,0.75);
+		display: flex;
+	   justify-content: center;
+	   flex-flow: column wrap;
+	   align-items: center;
+	   text-align: center;
+		word-break: break-word;
+	   max-width: 25vw;
+	   min-width: 20vw;
+	   height: 100vh;
+		box-shadow: 5px 10px 8px #888888;
+		z-index: 100;
+	   header > h1 > hr {
+	    	background-color: rgb(148,149,150);
+	    	border: none;
+	    	color: gray;
+	    	margin: 0.25rem auto;
+	    	width: 75%;
+	    	height: 0.25rem;
+	    	border-radius: 1rem;
+	    }
+	   header > h1 {
+	    	margin: 0.5rem 0;
+	    	a {
+	    		text-decoration: none;
+				color: rgba(255,255,255,0.75);
+	    	}
+	    	&:hover hr {
+				background-color: white;
+			}
+	    }
+	   header > h6 {
+	    	margin: 1.5rem 0;
+		}
+	   header, section, footer {
+	    	padding: 1rem;
+	    	display: block;
+		}
+		section {
+			h4 {
+				margin-left: auto;
+				margin-right: auto;
+				width: fit-content;
+				border-bottom: 2px rgb(148,149,150) solid;
+				a {
+		    		text-decoration: none;
+					color: rgba(255,255,255,0.75);
+		    	}
+		    	&:hover {
+		    		border-color: white;
+				}
+			}
+		}
+	}
+	> main {
+		position: relative;
+		min-height: 100%;
+		margin-left: 25vw; // margin-left 0 FOR PHONE
+		padding: 1rem;
+		> nav {
+			box-shadow: 1px 2px 3px 0 #888888;
+			position: fixed;
+			top: 0;
+			display: block;
+			width: 100%;
+			height: 5rem;
+			z-index: 10;
+			> section {
+				display: flex;
+			    justify-content: start;
+			    align-items: center;
+			    height: 100%;
+			    button {
+			    	background-color: transparent;
+			    	border: none;
+			    	border-right: 1px solid lightgray;
+			    	padding: 1rem 1.5rem;
+			    	height: 100%;
+			    	margin: 0;
+			    	&:hover {
+			    		cursor: pointer;
+			    		background-color: rgba(150, 150, 150, 0.6);
+			    	}
+			    }
+			    button:last-child {
+			    	border-right: none;
+			    }
+			}
+		}
+		.middle-earth {
+			padding: 1rem; // pading 0 FOR PHONE
+			margin-top: 6rem;
+			.if_i_take_one_more_step_it_ll_be_the_farthest_away_from_home_you_have_ever_been {
+				background-color: lightgray;
+				padding: 0.5rem 1.5rem;
+				border-radius: 0.5rem;
+				svg {
+					fill: gray;
+				}
+				&:hover {
+					background-color: darkgray;
+				}
+				&:hover svg {
+					
+					fill: black;
+				}
+			}
+			.breadcrumb {
+				text-transform: uppercase;
+				text-align: left;
+				letter-spacing: 0.2rem;
+				color: #858585;
+				.light-text {
+					opacity: 0.6;
+				}
+			}
+			.middle-earth-container {
+				.book-of-mazarbul {
+					padding: 0;
+					margin: 0;
+					float: right;
+					p {
+						padding: 0.5rem;
+						margin: 0;
+						border-radius: 1rem;
+						&:hover {
+							svg {
+								fill: #b6babc;
+							}
+						}
+					}
+				}
+				/* FONT SIZES */
+				.ent-draught, .lembas , .honey-cake , .cram , .petty-dwarf-roots, .orc-vitality-drink {
+					text-transform: uppercase;
+					word-break: break-word;
+					margin: 0;
+					padding: 0;
+				}
+				.ent-draught {
+					font-size: 75px;
+					font-weight: bolder;
+				}
+				.lembas {
+					font-size: 65px;
+					font-weight: bold;
+				}
+				.honey-cake {
+					font-size: 50px;
+					font-weight: normal;
+				}
+				.cram {
+					font-size: 40px;
+					font-weight: lighter;
+				}
+				.petty-dwarf-roots {
+					font-size: 25px;
+					font-weight: lighter;
+				}
+				.orc-vitality-drink {
+					font-size: 20px;
+					font-weight: lighter;
+				}
+				// FONT COLORS
+				.arkenstone {
+					color: #b6babc; //SILVER
+				}
+				.elfstone {
+					color: #73be64; //GREEN
+				}
+				.nauglamir {
+					color: #c81e13; //RED
+				}
+				.silmaril {
+					color: #383838; //DARK
+				}
+				.phial_of_galadriel {
+					color: #e0e0e0;
+				}
+				a {
+					text-decoration: none;
+					color: gray;
+					&:hover {
+						> div {
+							background-color: rgba(0, 0, 0, 0.01);
+						}
+					}
+				}
+				.argonath-column {
+					margin: 0;
+					padding: 0;
+					/* BACKGROUND IMAGE */
+					.sword, .axe {
+						text-align: center;
+						width: 50vw;
+						background-size: cover;
+         			background-position: center;
+         			border-radius: 1rem;
+         			overflow: hidden;
+					}
+					.sword {
+						height: 30vh;
+					}
+					.axe {
+						height: 60vh;
+					}
+				}
+				.shire, .bywater, .moria, .rohan, .mirkwood {
+					display: flex;
+				}
+				.shire {
+	    			justify-content: flex-start;
+	    			flex-wrap: wrap;
+	    			margin-top: 3rem;
+	    			border-radius: 1rem;
+				}
+				.bywater {
+	    			justify-content: space-between;
+	    			flex-wrap: no-wrap;
+
+				}
+				.moria {
+	    			align-items: flex-end;
+	    			padding-left: 2rem;
+	    			> .side-description {
+	    				min-height: 3rem;
+	    				padding-left: 0.5rem;
+						word-break: break-word;
+	    				border-left: 1.5px lightgray solid;
+	    			}
+				}
+				.rohan {
+					width: 100%;
+					overflow: hidden;
+					justify-content: flex-start;
+	    			flex-wrap: wrap;
+	    			border-radius: 1rem;
+	    			width: 50vw;
+	    			img {
+	    				width: 50vw;
+	    				height: auto;
+	    			}
+	    			pre {
+	    				width: 50vw;
+	    			}
+				}
+				.mirkwood {
+					overflow: hidden;
+	    			align-items: start;
+	    			text-align: right;
+	    			margin-left: auto;
+					section ul {
+						padding-right: 5px;
+						list-style: none;
+						min-height: 3rem;
+	    				padding-left: 0.5rem;
+						word-break: break-word;
+	    				border-right: 2px lightgray solid;
+					}
+					section ul li {
+						padding: 2rem;
+					}
+				}
+				footer {
+					border-top: 1.5px lightgray solid;
+					padding: 1rem;
+					width: 90%;
+					text-align: center;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 900px) {
+	#visitors-layout {
+		> nav {
+			display: none;
+		}
+		> main {
+			> nav {
+				border-radius: 0;
+			}
+			padding: 0;
+			margin-left: 0;
+			.middle-earth {
+				padding: 0;
+				.breadcrumb, .if_i_take_one_more_step_it_ll_be_the_farthest_away_from_home_you_have_ever_been {
+					margin-left: 1rem;
+				}
+				.middle-earth-container {
+					.argonath-column {
+						width: 100vw;
+					}
+					.ent-draught, .lembas , .honey-cake , .cram , .petty-dwarf-roots, .orc-vitality-drink {
+						padding: 0 1rem;
+					}
+					* .sword, * .axe {
+						border-radius: 0 !important;
+						padding: 0;
+						max-height: 30vh;
+						width: 100vw !important;
+					}
+					.rohan {
+						width: 100vw !important;
+						overflow: hidden;
+						> div {
+							padding: 1rem;
+							margin: auto;
+						}
+						pre {
+	    					width: 95vw;
+	    				}
+					}
+					.shire {
+						margin-top: 0;
+					}
+					.mirkwood {
+						> section {
+							display: none;
+						}
+					}
+					.moria {
+						padding: 0;
+						.side-description:before {
+							content: "DESCRIPTION";
+							display: block;
+							color: gray;
+							font-size: 70%;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pulgamecanica's Web</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="bg-light text-dark" id="visitors-layout">
+    <nav id="side_bar">
+      <header>
+        <span>logo</span>
+        <h1><%= link_to 'Pulgamecanica', root_path %><hr></h1>
+        
+        <h6>Simple Blog</h6>
+      </header>
+      <section>
+          <h4><%= link_to 'Blog', root_path %></h4>
+          <h4><%= link_to 'Showcase', root_path %></h4>
+          <h4><%= link_to 'CV', root_path %></h4>
+      </section>
+      <footer>
+        <h6>links...</h6>
+      </footer>
+    </nav>
+    <main>
+      <nav class="bg-light">
+        <section>
+          <button id="expand_side_bar_button" onclick="expand_sideBar()">
+            <%= render partial: 'visitors/svg/menu_hamburger' %>
+          </button>
+          <button>
+            <%= render partial: 'visitors/svg/theme' %>
+          </button>
+          <button>
+            <%= render partial: 'visitors/svg/translate' %>
+          </button>
+          <button>
+            <%= render partial: 'visitors/svg/search' %>
+          </button>
+        </section>
+      </nav>
+      <div class="middle-earth">
+        <%= yield %>
+      </div>
+      <div class="middle-earth">
+        <div class="middle-earth-container">
+          <footer>
+          <p class="elfstone orc-vitality-drink">Pulgamecanica's Blog</p>
+          <p class="arkenstone orc-vitality-drink">pulgamecanica11@gmail.com</p>
+          <p class="silmaril orc-vitality-drink">Copyright © 2022 All Rights Reserved by Pulgamecanica.</p>
+          </footer>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
+
+<script type="text/javascript">
+  function expand_sideBar() {
+    document.querySelector("#side_bar").style.width = "100%";
+    document.querySelector("#side_bar").style.maxWidth = "none";
+    document.querySelector("#side_bar").style.display = "flex";
+    document.querySelector("main").style.display = "none";
+  }
+  function contract_sideBar() {
+    document.querySelector("#side_bar").style.width = "100%";
+    document.querySelector("#side_bar").style.maxWidth = "25vw";
+    document.querySelector("#side_bar").style.display = "none";
+    document.querySelector("main").style.display = "block";
+  }
+</script>

@@ -2,11 +2,11 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   publish() {
-    this.element.style.backgroundColor = "pink";
+    // this.element.style.backgroundColor = "pink";
     let id =  this.element.dataset.postId;
-    fetch("posts/publish", {
+    fetch("publish", {
       method:'POST',
-      dataType:"json",
+      dataType:"html",
       data: {post_id: id},
       success:function(result){
         alert(result);
@@ -14,7 +14,15 @@ export default class extends Controller {
     });
   }
   unpublish() {
-    this.element.style.backgroundColor = "brown";
+    // this.element.style.backgroundColor = "brown";
     let id =  this.element.dataset.postId;
+    fetch("unpublish", {
+      method:'POST',
+      dataType:"html",
+      data: {post_id: id},
+      success:function(result){
+        alert(result);
+      }
+    });
   }
 }

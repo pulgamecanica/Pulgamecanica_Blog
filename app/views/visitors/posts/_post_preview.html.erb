@@ -1,0 +1,25 @@
+ <div class="shire">
+  <div class="argonath-column bree">
+    <p class="ent-draught silmaril"><%= post.title %></p>
+    <div class="bywater">
+      <p class="petty-dwarf-roots arkenstone"><%= post.published_at.strftime("%d %b %Y") %></p>
+      <p class="petty-dwarf-roots arkenstone">
+        <%= render partial: 'visitors/svg/updated' %>
+        <%= post.updated_at.strftime("%Y %m") %>  
+      </p>
+    </div>
+    <% if post.header_image.present? %>
+      <% if @full_img.nil? || !@full_img %>
+        <div class="sword" style="background-image: url(<%= url_for(post.header_image) %>);" ></div>
+      <% else %>
+        <div class="axe" style="background-image: url(<%= url_for(post.header_image) %>);" ></div>
+      <% end %>
+    <% else %>
+      <div class="sword"><%= render partial: 'visitors/svg/no_image' %></div>
+    <% end %>
+  </div>
+
+  <div class="argonath-column moria">
+    <p class="side-description"><%= post.description %></p>
+  </div>
+</div>

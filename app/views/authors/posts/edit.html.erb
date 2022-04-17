@@ -9,7 +9,7 @@
         <%= render 'form', post: @post %>
       </div>
 
-      <div class="card-footer" data-controller="publish" data-post-id='<%= @post.id %>'>
+      <div class="card-footer" data-controller="publish">
         <% if @post.published? %>
           <a href="#"
             class="btn btn-secondary btn-block"
@@ -51,12 +51,12 @@
         <% if @post.elements.none? {|element| element.persisted? } %>
            <div class="p-3 text-center">
             <h2 class="text-secondary">
-              <i class="fas fa-lightbulb"></i>
+              <%= render partial: 'authors/svg/light_bulb' %>
             </h2>
             <p>Try the icons above to create elements. </p>
            </div>
         <% else %>
-          <ul id="elements" data-action="drop->elements#sort">
+          <ul id="elements" data-action="dragover->elements#dragover drop->elements#sort">
             <% @post.elements.order(position: :asc).each do |element| %>
             <% if element.persisted? %>
               <li data-id="<%= element.id %>" class="element-item">

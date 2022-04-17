@@ -14,7 +14,7 @@
  *= require_self
  */
 
-// .authors {
+.authors-layout {
     .paragraph {
     transition: background-color 0.5s ease;
         &:hover {
@@ -50,7 +50,7 @@
         list-style: none;
         padding-left: 0;
     }
-// }
+}
 
 .elements-icons-bar
 {

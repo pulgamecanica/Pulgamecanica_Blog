@@ -1,0 +1,37 @@
+<%= link_to posts_index_path, class: 'if_i_take_one_more_step_it_ll_be_the_farthest_away_from_home_you_have_ever_been' do %> 
+	<%= render partial: 'visitors/svg/go_back' %>
+<% end %>
+<h6 class="breadcrumb">HOME / BLOG / <span class="light-text"><%= @post.title %></span></h6>
+<div class="middle-earth-container">
+     <%= render 'post_preview', post: @post %>
+
+	<div class="shire">
+		<div class="argonath-column">
+			<% @post.elements.each do |element| %>
+				<div class="rohan">
+					<% if element.image? %>
+						<div class="">
+							<% if element.image.present? %>
+								<%= image_tag(element.image) %>
+							<% end %>
+						</div>
+					<% elsif element.paragraph? %>
+						<div class="">
+							<%= element.content %>
+						</div>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
+  		<div class="argonath-column mirkwood">
+  			<section>
+  				<ul>
+  					<li>one</li>
+  					<li>second</li>
+  					<li>tree like plant?</li>
+  					<li>last one</li>
+  				</ul>
+  			</section>
+  		</div>
+	</div>
+</div>

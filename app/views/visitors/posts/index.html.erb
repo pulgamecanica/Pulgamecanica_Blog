@@ -1,0 +1,9 @@
+<h6 class="breadcrumb">HOME / <span class="light-text">BLOG</span></h6>
+<div class="middle-earth-container">
+  <% @posts.each do |post| %>
+    <%= link_to posts_show_path(post) do %>
+     <%= render 'post_preview', post: post %>
+     <span class="book-of-mazarbul"><p><%= render partial: 'visitors/svg/book' %></p></span>
+    <% end %>
+<% end %>
+</div>

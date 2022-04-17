@@ -1,17 +1,34 @@
 module Authors
   class PostsController < AuthorsController
+    protect_from_forgery except: [:publish, :unpublish]
     before_action :set_author
-    before_action :set_post, only: %i[ edit update destroy ]
+    before_action :set_post, only: %i[ edit update destroy publish unpublish]
 
 
     def publish
-      post = @author.posts.find(params[:post_id])
-      post.update(published: true, published_at: Time.now)
+      @post.update(published: true, published_at: Time.now)
+      respond_to do |format|
+        if @post.save
+          format.html { redirect_to edit_post_path(@post), notice: "Post was successfully created." }
+          format.json { render :edit, status: :created, location: @post }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @post.errors, status: :unprocessable_entity }
+        end
+      end
     end
 
     def unpublish
-      post = @author.posts.find(params[:post_id])
-      post.update(published: false, published_at: nil)    
+      @post.update(published: false, published_at: nil)    
+      respond_to do |format|
+        if @post.save
+          format.html { redirect_to edit_post_path(@post), notice: "Post was successfully created." }
+          format.json { render :edit, status: :created, location: @post }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @post.errors, status: :unprocessable_entity }
+        end
+      end
     end
 
     # GET /posts or /posts.json

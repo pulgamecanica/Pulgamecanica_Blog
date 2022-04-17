@@ -12,7 +12,7 @@ export { application }
 import Sortable from 'sortablejs';
 
 document.addEventListener('turbo:load', () => {
-  
+
   document.addEventListener('click', () => {
     let element = event.target.closest('.paragraph-content')
     if (!element) return;
