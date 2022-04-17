@@ -92,6 +92,6 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # SCSSC
-  config.assets.css_compressor = :yui
+  # config.assets.css_compressor = :yui
   config.assets.js_compressor = :terser
 end
