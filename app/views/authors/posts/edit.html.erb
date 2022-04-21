@@ -11,13 +11,18 @@
 
       <div class="card-footer" data-controller="publish">
         <% if @post.published? %>
-          <a href="#"
-            class="btn btn-secondary btn-block"
-            data-action="click->publish#unpublish">Unpublish</a>
+          <%= button_to [:unpublish, @post], {method: :post, class: 'btn btn-secondary btn-block'} do %>
+            Unpublish
+          <% end %>
+          <!-- STIMULUS -->
+          <!-- <a href="#" class="btn btn-secondary btn-block" data-action="click->publish#unpublish">Unpublish</a> -->
+        
         <% else %>
-          <a href="#"
-            class="btn btn-info btn-block"
-            data-action="click->publish#publish">Publish</a>
+          <%= button_to [:publish, @post], {method: :post, class: 'btn btn-info btn-block'} do %>
+            Publish
+          <% end %>
+          <!-- STIMULUS -->
+          <!--<a href="#" class="btn btn-info btn-block" data-action="click->publish#publish">Publish</a> -->
         <% end %>
       </div>  
     </div>

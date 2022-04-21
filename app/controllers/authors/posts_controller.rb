@@ -1,9 +1,17 @@
 module Authors
   class PostsController < AuthorsController
-    protect_from_forgery except: [:publish, :unpublish]
+    protect_from_forgery except: [:publish, :unpublish, :sort_elements]
     before_action :set_author
-    before_action :set_post, only: %i[ edit update destroy publish unpublish]
+    before_action :set_post, only: %i[ edit update destroy publish unpublish sort_elements]
 
+    def sort_elements
+      p "*" * 100
+      puts params
+      p "*" * 100
+      # @post.elements.each do |element|
+      #   element.update()
+      # end
+    end
 
     def publish
       @post.update(published: true, published_at: Time.now)
@@ -96,7 +104,7 @@ module Authors
 
       # Only allow a list of trusted parameters through.
       def post_params
-        params.require(:post).permit(:title, :description, :header_image)
+        params.require(:post).permit(:title, :description, :header_image, :published, :sorted_elements)
       end
   end
 end

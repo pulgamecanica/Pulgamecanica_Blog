@@ -13,6 +13,17 @@ import Sortable from 'sortablejs';
 
 document.addEventListener('turbo:load', () => {
 
+  var prevScrollpos = window.pageYOffset;
+  window.onscroll = function() {
+  var currentScrollPos = window.pageYOffset;
+    if (prevScrollpos > currentScrollPos) {
+      document.getElementById("main-nav-bar").style.top = "0";
+    } else {
+      document.getElementById("main-nav-bar").style.top = "-100px";
+    }
+    prevScrollpos = currentScrollPos;
+  }
+
   document.addEventListener('click', () => {
     let element = event.target.closest('.paragraph-content')
     if (!element) return;

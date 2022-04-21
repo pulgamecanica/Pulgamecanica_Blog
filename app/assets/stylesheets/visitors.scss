@@ -44,7 +44,13 @@ body {
 	font-size: 150%;
 	> nav {
 		position: fixed;
-		background-color:rgb(25,55,71);
+		top: 0;
+		background-color: rgb(25,55,71);
+		background-image: none;
+		background-position: center;
+		background-repeat: no-repeat;
+		// background-repeat: no-repeat repeat;
+		background-size: 90%;
 		color: rgba(255,255,255,0.75);
 		display: flex;
 	   justify-content: center;
@@ -57,6 +63,9 @@ body {
 	   height: 100vh;
 		box-shadow: 5px 10px 8px #888888;
 		z-index: 100;
+		&:hover {
+			background-image: image_url(asset_path('cat2.gif'));
+		}
 	   header > h1 > hr {
 	    	background-color: rgb(148,149,150);
 	    	border: none;
@@ -89,11 +98,14 @@ body {
 				margin-right: auto;
 				width: fit-content;
 				border-bottom: 2px rgb(148,149,150) solid;
+				padding: 0.5rem;
 				a {
 		    		text-decoration: none;
 					color: rgba(255,255,255,0.75);
 		    	}
 		    	&:hover {
+		    		border-radius: 0.5rem;
+		    		background-color: rgba(255,255,255, 0.5);
 		    		border-color: white;
 				}
 			}
@@ -105,30 +117,34 @@ body {
 		margin-left: 25vw; // margin-left 0 FOR PHONE
 		padding: 1rem;
 		> nav {
-			box-shadow: 1px 2px 3px 0 #888888;
+			transition: top 0.3s;
+			// box-shadow: 1px 2px 3px 0 #888888;
+			-webkit-box-shadow: 0 8px 6px -6px lightgray;
+			-moz-box-shadow: 0 8px 6px -6px lightgray;
+			box-shadow: 0 8px 6px -6px lightgray;
 			position: fixed;
 			top: 0;
 			display: block;
-			width: 100%;
+			width: 52%;
 			height: 5rem;
-			z-index: 10;
+			z-index: 110;
 			> section {
 				display: flex;
-			    justify-content: start;
-			    align-items: center;
-			    height: 100%;
-			    button {
-			    	background-color: transparent;
-			    	border: none;
-			    	border-right: 1px solid lightgray;
-			    	padding: 1rem 1.5rem;
-			    	height: 100%;
-			    	margin: 0;
-			    	&:hover {
-			    		cursor: pointer;
-			    		background-color: rgba(150, 150, 150, 0.6);
-			    	}
-			    }
+				justify-content: start;
+				align-items: center;
+				height: 100%;
+				button {
+					background-color: transparent;
+					border: none;
+					border-right: 1px solid lightgray;
+					padding: 1rem 1.5rem;
+					height: 100%;
+					margin: 0;
+					&:hover {
+						cursor: pointer;
+						background-color: rgba(150, 150, 150, 0.6);
+					}
+				}
 			    button:last-child {
 			    	border-right: none;
 			    }
@@ -326,6 +342,7 @@ body {
 		}
 		> main {
 			> nav {
+				width: 100%;
 				border-radius: 0;
 			}
 			padding: 0;
@@ -336,6 +353,9 @@ body {
 					margin-left: 1rem;
 				}
 				.middle-earth-container {
+					.book-of-mazarbul {
+						display: none;
+					}
 					.argonath-column {
 						width: 100vw;
 					}

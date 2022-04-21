@@ -12,8 +12,9 @@ Rails.application.routes.draw do
   end
 
   scope module: 'authors' do
-    post 'posts/:id/publish', to: 'posts#publish'
-    post 'posts/:id/unpublish', to: 'posts#unpublish'
+    post 'posts/:id/sort_elements', to: 'posts#sort_elements'
+    post 'posts/:id/publish', to: 'posts#publish', as: 'publish_post'
+    post 'posts/:id/unpublish', to: 'posts#unpublish', as: 'unpublish_post'
     resources :posts, only: [:index, :new, :create, :edit, :update, :destroy] do
       resources :elements, only: [:create, :update, :destroy]
     end
