@@ -7,10 +7,13 @@ module Authors
     def sort_elements
       p "*" * 100
       puts params
+      elements_sort = JSON.parse(request.body.read());
+      puts elements_sort
+      elements_sort.each do |element|
+        @post.elements.find(element["id"].to_i).update(position: element["position"].to_i);
+      end
       p "*" * 100
-      # @post.elements.each do |element|
-      #   element.update()
-      # end
+      render json: {"foo": {"bar": 1, "baz": 2}, "bat": [0, 1, 2]}
     end
 
     def publish
@@ -99,12 +102,15 @@ module Authors
       end
       # Use callbacks to share common setup or constraints between actions.
       def set_post
+        p "*" * 100
+        puts params
+        p "*" * 100
         @post = @author.posts.find(params[:id])
       end
 
       # Only allow a list of trusted parameters through.
       def post_params
-        params.require(:post).permit(:title, :description, :header_image, :published, :sorted_elements)
+        params.require(:post).permit(:title, :description, :header_image, :published, :data)
       end
   end
 end

@@ -1,4 +1,4 @@
-<div class="row m-0">
+<div class="row m-0" id="post-card">
   <div class="col-md-4">
     <%= link_to 'Back', posts_path, class: 'btn btn-lg btn-dark mb-3' %> 
     <div class="card">
@@ -28,7 +28,7 @@
     </div>
   </div>
 
-   <div class="col-md-8">
+   <div class="col-md-8" id="elements-card">
     <div class="mb-3 elements-icons-bar">
       <%= form_with(model: [@post, @element], html: {class: 'float-left mr-1'}) do |form| %>
         <%= form.hidden_field :element_type, value: 'paragraph' %>
@@ -61,7 +61,7 @@
             <p>Try the icons above to create elements. </p>
            </div>
         <% else %>
-          <ul id="elements" data-action="dragover->elements#dragover drop->elements#sort">
+          <ul id="elements" data-action="dragover->elements#dragover drag->elements#sort">
             <% @post.elements.order(position: :asc).each do |element| %>
             <% if element.persisted? %>
               <li data-id="<%= element.id %>" class="element-item">

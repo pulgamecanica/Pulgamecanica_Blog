@@ -39,6 +39,11 @@ body {
 	background-color: rgb(248,249,250);
 }
 
+.bg-dark {
+	background-color: #121212;
+}
+
+
 #visitors-layout {
 	font-family: "AdventPro Medium";
 	font-size: 150%;
@@ -61,7 +66,7 @@ body {
 	   max-width: 25vw;
 	   min-width: 20vw;
 	   height: 100vh;
-		box-shadow: 5px 10px 8px #888888;
+		box-shadow: 0 1px 10px 4px #3A3A3A;
 		z-index: 100;
 		&:hover {
 			background-image: image_url(asset_path('cat2.gif'));
@@ -293,6 +298,7 @@ body {
 	    			}
 				}
 				.rohan {
+					margin: 1rem 0;
 					width: 100%;
 					overflow: hidden;
 					justify-content: flex-start;
@@ -301,6 +307,7 @@ body {
 	    			width: 50vw;
 	    			img {
 	    				width: 50vw;
+	    				padding: 1rem;
 	    				height: auto;
 	    			}
 	    			pre {

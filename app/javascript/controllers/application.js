@@ -13,16 +13,43 @@ import Sortable from 'sortablejs';
 
 document.addEventListener('turbo:load', () => {
 
-  var prevScrollpos = window.pageYOffset;
+  let prevScrollpos = window.pageYOffset;
   window.onscroll = function() {
-  var currentScrollPos = window.pageYOffset;
-    if (prevScrollpos > currentScrollPos) {
-      document.getElementById("main-nav-bar").style.top = "0";
-    } else {
-      document.getElementById("main-nav-bar").style.top = "-100px";
+    var currentScrollPos = window.pageYOffset;
+    if(document.getElementById("main-nav-bar"))
+    {
+      if (prevScrollpos > currentScrollPos) {
+        document.getElementById("main-nav-bar").style.top = "0";
+      } else {
+        document.getElementById("main-nav-bar").style.top = "-100px";
+      }
+      prevScrollpos = currentScrollPos;
     }
-    prevScrollpos = currentScrollPos;
   }
+
+  let themeButton = document.getElementById("theme-button");
+  themeButton.addEventListener('click', () => {
+    let sideBar = document.getElementById("side_bar");
+    let silver = document.querySelectorAll(".arkenstone");
+    let green = document.querySelectorAll(".elfstone");
+    let red = document.querySelectorAll(".nauglamir");
+    let dark = document.querySelectorAll(".silmaril");
+    if (themeButton.classList.contains("active"))
+    {
+      themeButton.classList.remove("active");
+      document.body.classList.remove("bg-light");
+      document.body.classList.add("bg-dark");
+      sideBar.style.backgroundColor = "#0f0f2380";
+      dark.forEach(function(elem) {elem.style.color = "#e0e0e0";});
+    }
+    else {
+      themeButton.classList.add("active");
+      document.body.classList.add("bg-light");
+      document.body.classList.remove("bg-dark");
+      sideBar.style.backgroundColor = "#193747";
+      dark.forEach(function(elem) {elem.style.color = "#383838";});
+    }
+  })
 
   document.addEventListener('click', () => {
     let element = event.target.closest('.paragraph-content')
@@ -45,7 +72,7 @@ document.addEventListener('turbo:load', () => {
   let sortable_elements = document.getElementById('elements')
   if (sortable_elements)
     Sortable.create(sortable_elements, { animation: 150 })
-})
+});
 
 
 
