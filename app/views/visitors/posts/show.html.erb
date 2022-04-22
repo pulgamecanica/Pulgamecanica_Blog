@@ -7,7 +7,7 @@
 
 	<div class="shire">
 		<div class="argonath-column">
-			<% @post.elements.each do |element| %>
+			<% @post.elements.order(position: :asc).each do |element| %>
 				<div class="rohan">
 					<% if element.image? %>
 						<div class="">
