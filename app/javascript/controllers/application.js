@@ -28,29 +28,31 @@ document.addEventListener('turbo:load', () => {
   }
 
   let themeButton = document.getElementById("theme-button");
-  themeButton.addEventListener('click', () => {
-    let sideBar = document.getElementById("side_bar");
-    let silver = document.querySelectorAll(".arkenstone");
-    let green = document.querySelectorAll(".elfstone");
-    let red = document.querySelectorAll(".nauglamir");
-    let dark = document.querySelectorAll(".silmaril");
-    if (themeButton.classList.contains("active"))
-    {
-      themeButton.classList.remove("active");
-      document.body.classList.remove("bg-light");
-      document.body.classList.add("bg-dark");
-      sideBar.style.backgroundColor = "#0f0f2380";
-      dark.forEach(function(elem) {elem.style.color = "#e0e0e0";});
-    }
-    else {
-      themeButton.classList.add("active");
-      document.body.classList.add("bg-light");
-      document.body.classList.remove("bg-dark");
-      sideBar.style.backgroundColor = "#193747";
-      dark.forEach(function(elem) {elem.style.color = "#383838";});
-    }
-  })
-
+  if (themeButton)
+  {
+    themeButton.addEventListener('click', () => {
+      let sideBar = document.getElementById("side_bar");
+      let silver = document.querySelectorAll(".arkenstone");
+      let green = document.querySelectorAll(".elfstone");
+      let red = document.querySelectorAll(".nauglamir");
+      let dark = document.querySelectorAll(".silmaril");
+      if (themeButton.classList.contains("active"))
+      {
+        themeButton.classList.remove("active");
+        document.body.classList.remove("bg-light");
+        document.body.classList.add("bg-dark");
+        sideBar.style.backgroundColor = "#0f0f2380";
+        dark.forEach(function(elem) {elem.style.color = "#e0e0e0";});
+      }
+      else {
+        themeButton.classList.add("active");
+        document.body.classList.add("bg-light");
+        document.body.classList.remove("bg-dark");
+        sideBar.style.backgroundColor = "#193747";
+        dark.forEach(function(elem) {elem.style.color = "#383838";});
+      }
+    })
+  }
   document.addEventListener('click', () => {
     let element = event.target.closest('.paragraph-content')
     if (!element) return;
