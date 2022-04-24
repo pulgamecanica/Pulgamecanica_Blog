@@ -16,7 +16,9 @@ Rails.application.routes.draw do
     post 'posts/:id/publish', to: 'posts#publish', as: 'publish_post'
     post 'posts/:id/unpublish', to: 'posts#unpublish', as: 'unpublish_post'
     resources :posts, only: [:index, :new, :create, :edit, :update, :destroy] do
-      resources :elements, only: [:create, :update, :destroy]
+      resources :elements, only: [:create, :update, :destroy] do
+        resources :title, only: [:update]
+      end
     end
   end
 end

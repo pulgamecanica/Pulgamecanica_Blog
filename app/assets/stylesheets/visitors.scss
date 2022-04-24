@@ -305,7 +305,8 @@ body {
 	    			flex-wrap: wrap;
 	    			border-radius: 1rem;
 	    			width: 50vw;
-	    			img {
+	    			> img {
+	    				margin: auto;
 	    				width: 50vw;
 	    				padding: 1rem;
 	    				height: auto;
@@ -381,6 +382,9 @@ body {
 						> div {
 							padding: 1rem;
 							margin: auto;
+						}
+						> img {
+							width: 85vw;
 						}
 						pre {
 	    					width: 95vw;

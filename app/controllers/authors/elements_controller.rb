@@ -1,5 +1,6 @@
 module Authors
   class ElementsController < PostsController
+    # protect_from_forgery
     before_action :set_author
     before_action :set_post
     before_action :set_element, only: %i[ update destroy ]
@@ -7,7 +8,9 @@ module Authors
     # POST /elements or /elements.json
     def create
       @element = @post.elements.build(element_params)
-
+      if (element_params["element_type"] == "title")
+        title = @element.build_title(title_type: 0)
+      end
       respond_to do |format|
         if @element.save
           format.html { redirect_to edit_post_path(@post), notice: "Element was successfully created." }

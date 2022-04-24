@@ -10,11 +10,9 @@
 			<% @post.elements.order(position: :asc).each do |element| %>
 				<div class="rohan">
 					<% if element.image? %>
-						<div class="">
-							<% if element.image.present? %>
-								<%= image_tag(element.image) %>
-							<% end %>
-						</div>
+						<% if element.image.present? %>
+							<%= image_tag(element.image) %>
+						<% end %>
 					<% elsif element.paragraph? %>
 						<div class="silmaril">
 							<%= element.content %>

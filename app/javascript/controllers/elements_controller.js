@@ -18,28 +18,8 @@ export default class extends Controller {
     {
       element.dataset.elements = JSON.stringify(elements);
       let data = element.dataset.elements;
-      console.log(data); // HERE YOU NEED TO CALL THE CONTROLLER TO REORDER THE ELEMENTS :D
-      console.log(JSON.parse(data));
-
-      // const csrfToken = document.getElementsByName("csrf-token")[0].content;
-
-      // fetch("sort_elements", {
-      //   method: "POST",
-      //   headers: {
-      //     "X-CSRF-Token": csrfToken,
-      //     "Content-Type": "application/json",
-      //     Accept: "application/json",
-      //   },
-      //   body: JSON.stringify(elements),
-      // })
-      // .then((response) => response.json())
-      // .then((data) => {
-      //   console.log("Success:", data);
-      // })
-      // .catch((error) => {
-      //   console.error("Error:", error);
-      // });
-
+      // console.log(data); // HERE YOU NEED TO CALL THE CONTROLLER TO REORDER THE ELEMENTS :D
+      // console.log(JSON.parse(data));
       fetch("sort_elements", {
         method: "POST", 
         headers: {
@@ -54,9 +34,6 @@ export default class extends Controller {
       .catch((error) => {
         console.error("Error:", error);
       });
-
-
-
       // this.stimulate('ElementsReflex#sort', element)
     }
   }
