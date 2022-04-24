@@ -2,6 +2,10 @@ class Title < ApplicationRecord
   belongs_to :element
   validates :title_type, inclusion: {in: [0, 1, 2,]}
 
+  def Title.types
+    return [0, 1, 2,]
+  end
+
   def title0?
     title_type == 0
   end

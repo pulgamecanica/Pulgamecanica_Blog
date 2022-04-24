@@ -13,8 +13,19 @@
 						<% if element.image.present? %>
 							<%= image_tag(element.image) %>
 						<% end %>
+					<% elsif element.title? %>
+						<div class="silmaril dead-marshes">
+							<% case element.title.title_type %>
+							<% when 0 %>
+								<p class="ent-draught"><%= element.title.name %></p>
+							<% when 1 %>
+								<p class="lembas"><%= element.title.name %></p>
+							<% when 2 %>
+								<p class="honey-cake"><%= element.title.name %></p>
+							<% end %>
+						</div>
 					<% elsif element.paragraph? %>
-						<div class="silmaril">
+						<div class="moria silmaril">
 							<%= element.content %>
 						</div>
 					<% end %>

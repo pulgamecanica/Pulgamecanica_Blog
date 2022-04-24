@@ -155,9 +155,11 @@ body {
 			    }
 			}
 		}
+		// And thus you enter Middle Earth
 		.middle-earth {
 			padding: 1rem; // pading 0 FOR PHONE
 			margin-top: 6rem;
+			// GO BACK? Sam didn't, fyi...
 			.if_i_take_one_more_step_it_ll_be_the_farthest_away_from_home_you_have_ever_been {
 				background-color: lightgray;
 				padding: 0.5rem 1.5rem;
@@ -182,7 +184,9 @@ body {
 					opacity: 0.6;
 				}
 			}
+			// Let's go to the container of all magic
 			.middle-earth-container {
+				// The dwarfs wrote amazing posts... click the book and read
 				.book-of-mazarbul {
 					padding: 0;
 					margin: 0;
@@ -229,7 +233,7 @@ body {
 					font-size: 20px;
 					font-weight: lighter;
 				}
-				// FONT COLORS
+				/* FONT COLORS */
 				.arkenstone {
 					color: #b6babc; //SILVER
 				}
@@ -245,6 +249,7 @@ body {
 				.phial_of_galadriel {
 					color: #e0e0e0;
 				}
+				/* Disable ugly links in the container */
 				a {
 					text-decoration: none;
 					color: gray;
@@ -254,6 +259,7 @@ body {
 						}
 					}
 				}
+				/* Flex Columns */
 				.argonath-column {
 					margin: 0;
 					padding: 0;
@@ -273,20 +279,43 @@ body {
 						height: 60vh;
 					}
 				}
+				.dead-marshes {
+					// border-bottom: 1px gray solid;
+					// text-decoration: underline;
+					text-decoration: 3px underline;
+				}
+				/* Container Flex Templates */
 				.shire, .bywater, .moria, .rohan, .mirkwood {
 					display: flex;
 				}
+				/* SHIRE */
+				/*  ___________ */
+				/* | ////      |*/
+				/* | ////      |*/
+				/* | ////      |*/
+				/*  ----------- */
 				.shire {
 	    			justify-content: flex-start;
 	    			flex-wrap: wrap;
 	    			margin-top: 3rem;
 	    			border-radius: 1rem;
 				}
+				/* BYWATER */
+				/*  ___________ */
+				/* |///     ///|*/
+				/* |///     ///|*/
+				/* |///     ///|*/
+				/*  ----------- */
 				.bywater {
 	    			justify-content: space-between;
 	    			flex-wrap: no-wrap;
-
 				}
+				/* MORIA */
+				/*  ___________ */
+				/* |       ////|*/
+				/* |       ////|*/
+				/* |       ////|*/
+				/*  ----------- */
 				.moria {
 	    			align-items: flex-end;
 	    			padding-left: 2rem;
@@ -297,6 +326,15 @@ body {
 	    				border-left: 1.5px lightgray solid;
 	    			}
 				}
+				/* ROHAN */
+				/*  ___________ */
+				/* | ////    XX|*/
+				/* | ////    XX|*/
+				/* |  .......XX|*/
+				/* |  ..IMG..XX|*/
+				/* |  .......XX|*/
+				/* | ////    XX|*/
+				/*  ----------- */
 				.rohan {
 					margin: 1rem 0;
 					width: 100%;
@@ -315,6 +353,14 @@ body {
 	    				width: 50vw;
 	    			}
 				}
+				/* MIRKWOOD */
+				/*  ___________ */
+				/* | ///T      |*/
+				/* | ///T      |*/
+				/* | ///T      |*/
+				/* | ////      |*/
+				/* | --------- |*/
+				/*  ----------- */
 				.mirkwood {
 					overflow: hidden;
 	    			align-items: start;

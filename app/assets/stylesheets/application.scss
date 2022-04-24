@@ -16,7 +16,34 @@
 
 .authors-layout {
     .paragraph {
-    transition: background-color 0.5s ease;
+        transition: background-color 0.5s ease;
+        .element-title {
+            min-width: 75%;
+        }
+        .title-form {
+            min-height: 50px;
+            font-size: 150%;
+        }
+        .list-group {
+            .list-group-item
+            {
+                background: none;
+            }
+            .list-group-item.title-active svg {
+                fill: none;
+                width: 35px;
+                height: 35px;
+                .title-svg-content {
+                    stroke: black;
+                }
+            }
+            .list-group-item.title-inactive svg {
+                fill: none;
+                .title-svg-content{
+                    stroke: lightgray;
+                }
+            }
+        }
         &:hover {
             background-color: #f8f9fa;
             cursor: pointer;
