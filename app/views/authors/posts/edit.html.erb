@@ -48,6 +48,18 @@
           <%= render partial: 'authors/svg/title' %>
         <% end %>
       <% end %>
+      <%= form_with(model: [@post, @element]) do |form| %>
+        <%= form.hidden_field :element_type, value: 'code_file' %>
+        <%= button_tag(type: 'submit', class: 'btn btn-secondary') do %>
+          <%= render partial: 'authors/svg/attachment' %>
+        <% end %>
+      <% end %>
+      <%= form_with(model: [@post, @element]) do |form| %>
+        <%= form.hidden_field :element_type, value: 'pdf' %>
+        <%= button_tag(type: 'submit', class: 'btn btn-secondary') do %>
+          <%= render partial: 'authors/svg/add_pdf' %>
+        <% end %>
+      <% end %>
     </div>
 
     <div class="card mb-5 ">
@@ -77,6 +89,7 @@
                       <% if element.content.present?%>
                         <%= element.content %>
                       <% else %>
+                        <div class="text-end bg-secondary d-inline-block p-1 rounded" style="float: right"><%= render partial: 'authors/svg/paragraph'%></div>
                         Click to add content.
                       <% end %>
                     </div>
@@ -90,6 +103,7 @@
                           </div>
                           <%= link_to 'Delete', post_element_path(@post, element), class: 'btn btn-danger', data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this element?"} %>
                         </div>
+                        <hr>
                       <% end %>
                     </div>
                   </div>
@@ -97,15 +111,71 @@
                   <div class="mb-4 p-3 image">
                     <% if element.image.present? %>
                       <%= link_to post_element_path(@post, element), class: 'delete-btn btn btn-danger mt-2 float-right', data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this element?"} do %>
-                      <i class="text-light">X</i>
+                        <i class="text-light">X</i>
                       <% end %>
-                        <%= image_tag(element.image) %>
+                      <% if element.image.representable? %>
+                          <%= image_tag(element.image) %>
+                      <% else %>
+                        <%= link_to rails_blob_path(element.image, disposition: "attachment") do %>
+                          <button class="btn btn-light text-dark">
+                            <%= element.image.filename.to_s %>
+                            <%= render partial: 'authors/svg/download' %>
+                          </button>
+                        <% end %>
+                      <% end %>
                     <% else %>
+                      <div class="text-end bg-secondary d-inline-block p-1 rounded" style="float: right"><%= render partial: 'authors/svg/add_image' %></div>
                       <%= form_with(model: [@post, element]) do |form| %>
                         <%= form.file_field :image %>
                         <div class="mt-3">
                           <%= form.submit "Save", class: 'btn btn-primary'%>
                           <%= link_to 'Delete', post_element_path(@post, element), class: 'btn btn-danger', data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this element?"} %>
+                        </div>
+                        <hr>
+                      <% end %>
+                    <% end %>
+                  </div>
+                <% elsif element.pdf? %>
+                  <div class="mb-4 p-3 m-auto text-center">
+                    <% if element.file_pdf.present? %>
+                      <%= link_to post_element_path(@post, element), class: 'delete-btn btn btn-danger', style: "right: 2rem", data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this element?"} do %>
+                        <i class="text-light">X</i>
+                      <% end %>
+                      <% if element.file_pdf.content_type == 'application/pdf'%>
+                         <embed src="<%= rails_blob_url(element.file_pdf) %>" width="90%" height="500" type="application/pdf">
+                      <% end %>
+                    <% else %>
+                      <div class="text-end bg-secondary d-inline-block p-1 rounded" style="float: right"><%= render partial: 'authors/svg/add_pdf' %></div>
+                      <%= form_with(model: [@post, element]) do |form| %>
+                        <%= form.file_field :file_pdf %>
+                        <div class="mt-3">
+                          <%= form.submit "Save", class: 'btn btn-primary'%>
+                          <%= link_to 'Delete', post_element_path(@post, element), class: 'btn btn-danger', data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this element?"} %>
+                        </div>
+                        <hr>
+                      <% end %>
+                    <% end %>
+                  </div>
+                <% elsif element.code_file? %>
+                  <div class="mb-4 p-3 m-auto text-center">
+                    <% if element.code_file.present? %>
+                      <%= link_to post_element_path(@post, element), class: 'delete-btn btn btn-danger', data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this element?"} do %>
+                        <i class="text-light">X</i>
+                      <% end %>
+                      <button class="btn btn-light text-dark">
+                        <%= link_to rails_blob_path(element.code_file, disposition: "attachment"), {class: "text-dark",style: "text-decoration: none"} do %>
+                          <%= element.code_file.filename.to_s %>
+                          <%= render partial: 'authors/svg/download' %>
+                        <% end %>
+                      </button>
+                    <% else %>
+                      <div class="text-end bg-secondary d-inline-block p-1 rounded" style="float: right"><%= render partial: 'authors/svg/attachment' %></div>
+                      <%= form_with(model: [@post, element]) do |form| %>
+                        <%= form.file_field :code_file %>
+                        <div class="mt-3">
+                          <%= form.submit "Save", class: 'btn btn-primary'%>
+                          <%= link_to 'Delete', post_element_path(@post, element), class: 'btn btn-danger', data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this element?"} %>
+                          <hr>
                         </div>
                       <% end %>
                     <% end %>
@@ -115,6 +185,7 @@
                     <div class="mb-4 paragraph">
                       <div class="p-3 paragraph-content">
                         <% if element.title.name.nil? || element.title.name.empty? %>
+                          <div class="text-end bg-secondary d-inline-block p-1 rounded" style="float: right"><%= render partial: 'authors/svg/title' %></div>
                           Click to add the title and choose the size.
                         <% else %>
                         <div class="d-flex justify-content-between mb-4">

@@ -59,7 +59,7 @@ module Authors
       end
 
       def element_params
-        params.require(:element).permit(:element_type, :content, :image)
+        params.require(:element).permit(:element_type, :content, :image, :file_pdf, :code_file)
       end
   end
 end

@@ -56,13 +56,13 @@
             max-width: 80%;
             max-height: 500px;
         }
-        .delete-btn {
-            position: absolute;
-            right: calc(10% + 38px);
-            opacity: 0.7;
-            &:hover {
-                opacity: 1;
-            }
+    }
+    .delete-btn {
+        position: absolute;
+        right: calc(10% + 38px);
+        opacity: 0.7;
+        &:hover {
+            opacity: 1;
         }
     }
     .post-card {
