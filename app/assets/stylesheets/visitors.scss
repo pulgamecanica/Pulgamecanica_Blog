@@ -54,6 +54,7 @@ body {
 		background-image: none;
 		background-position: center;
 		background-repeat: no-repeat;
+		overflow: scroll;
 		// background-repeat: no-repeat repeat;
 		background-size: 90%;
 		color: rgba(255,255,255,0.75);
@@ -175,6 +176,17 @@ body {
 					fill: black;
 				}
 			}
+			.go_where_you_must_go_and_hope {
+				border: none;
+				padding: 0;
+				border-radius: 1rem;
+				a p {
+					padding: 1rem !important;
+				}
+				span {
+					padding: 1rem;
+				}
+			}
 			.breadcrumb {
 				text-transform: uppercase;
 				text-align: left;
@@ -285,7 +297,7 @@ body {
 					text-decoration: 3px underline;
 				}
 				/* Container Flex Templates */
-				.shire, .bywater, .moria, .rohan, .mirkwood {
+				.shire, .bywater, .moria, .rohan, .mirkwood, .gondor{
 					display: flex;
 				}
 				/* SHIRE */
@@ -308,7 +320,8 @@ body {
 				/*  ----------- */
 				.bywater {
 	    			justify-content: space-between;
-	    			flex-wrap: no-wrap;
+	    			flex-wrap: nowrap;
+	    			align-items: center;
 				}
 				/* MORIA */
 				/*  ___________ */
@@ -318,10 +331,9 @@ body {
 				/*  ----------- */
 				.moria {
 	    			align-items: flex-end;
-	    			padding-left: 2rem;
 	    			> .side-description {
 	    				min-height: 3rem;
-	    				padding-left: 0.5rem;
+	    				margin-left: 0.5rem;
 						word-break: break-word;
 	    				border-left: 1.5px lightgray solid;
 	    			}
@@ -377,6 +389,19 @@ body {
 					section ul li {
 						padding: 2rem;
 					}
+				}
+				/* MIRKWOOD */
+				/*  ___________ */
+				/* |    ///    |*/
+				/* |    ///    |*/
+				/* |    ///    |*/
+				/* |    ///    |*/
+				/*  ----------- */
+				.gondor {
+					overflow: hidden;
+					margin: auto;
+					text-align: center; 
+					word-break: break-word;
 				}
 				footer {
 					border-top: 1.5px lightgray solid;

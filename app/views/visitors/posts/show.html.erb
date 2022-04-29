@@ -28,6 +28,25 @@
 						<div class="moria silmaril">
 							<%= element.content %>
 						</div>
+                		<% elsif element.pdf? %>
+                			<% if element.file_pdf.present? %>
+	                			<% if element.file_pdf.content_type == 'application/pdf'%>
+			                         <embed src="<%= rails_blob_url(element.file_pdf) %>" width="90%" height="500" type="application/pdf" style="overflow: scroll;">
+		                      	<% end %>
+                			<% end %>
+					<% elsif element.code_file? %>
+                    		<% if element.code_file.present? %>
+							<div class="gondor silmaril">
+								<button class="go_where_you_must_go_and_hope">
+				                        <%= link_to rails_blob_path(element.code_file, disposition: "attachment"), {class: "silmaril",style: "text-decoration: none"} do %>
+				                        		<div class="bywater">
+				                        			<p class="orc-vitality-drink silmaril"><%= element.code_file.filename.to_s %></p>
+				                         		<span style="text-align: left;"><%= render partial: 'visitors/svg/download' %></span>
+				                         	</div>
+				                  		<% end %>
+				                    </button>
+							</div>
+						<% end %>
 					<% end %>
 				</div>
 			<% end %>
@@ -35,7 +54,15 @@
   		<div class="argonath-column mirkwood">
   			<section>
   				<ul>
-  					<li>-</li>
+					<% @downloadable_elements.order(position: :asc).each do |element| %>
+						<% if element.code_file? && element.code_file.present?  %>
+  							<li>
+  								<%= link_to rails_blob_path(element.code_file, disposition: "attachment"), {class: "elfstone"} do %>
+				                   		<%= element.code_file.filename.to_s %>
+				                    <% end %>
+  							</li>
+  						<% end %>
+  					<% end %>
   				</ul>
   			</section>
   		</div>

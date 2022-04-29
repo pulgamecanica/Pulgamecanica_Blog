@@ -8,6 +8,10 @@ class Element < ApplicationRecord
   has_rich_text :content
   has_one :title, dependent: :destroy
 
+  scope :downloadable_elements, -> do
+    where(element_type: "code_file")
+  end
+
   def paragraph?
     element_type == 'paragraph'
   end
