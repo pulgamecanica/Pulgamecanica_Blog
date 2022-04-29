@@ -1,7 +1,8 @@
 <%= link_to posts_index_path, class: 'if_i_take_one_more_step_it_ll_be_the_farthest_away_from_home_you_have_ever_been' do %> 
 	<%= render partial: 'visitors/svg/go_back' %>
 <% end %>
-<h6 class="breadcrumb">HOME / BLOG / <span class="light-text"><%= @post.title %></span></h6>
+<h6 class="breadcrumb"><%= link_to 'HOME', root_path %> / <%= link_to 'BLOG', root_path %> / <span class="light-text"><%= @post.title %></span></h6>
+
 <div class="middle-earth-container">
      <%= render 'post_preview', post: @post %>
 
@@ -37,10 +38,10 @@
 					<% elsif element.code_file? %>
                     		<% if element.code_file.present? %>
 							<div class="gondor silmaril">
-								<button class="go_where_you_must_go_and_hope">
-				                        <%= link_to rails_blob_path(element.code_file, disposition: "attachment"), {class: "silmaril",style: "text-decoration: none"} do %>
+								<button class="go_where_you_must_go_and_hope bg-silver">
+				                        <%= link_to rails_blob_path(element.code_file, disposition: "attachment"), {class: "phial_of_galadriel",style: "text-decoration: none"} do %>
 				                        		<div class="bywater">
-				                        			<p class="orc-vitality-drink silmaril"><%= element.code_file.filename.to_s %></p>
+				                        			<p class="orc-vitality-drink phial_of_galadriel"><%= element.code_file.filename.to_s %></p>
 				                         		<span style="text-align: left;"><%= render partial: 'visitors/svg/download' %></span>
 				                         	</div>
 				                  		<% end %>

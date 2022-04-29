@@ -36,13 +36,15 @@ document.addEventListener('turbo:load', () => {
       let green = document.querySelectorAll(".elfstone");
       let red = document.querySelectorAll(".nauglamir");
       let dark = document.querySelectorAll(".silmaril");
+      let pre = document.querySelectorAll("pre");
       if (themeButton.classList.contains("active"))
       {
         themeButton.classList.remove("active");
         document.body.classList.remove("bg-light");
         document.body.classList.add("bg-dark");
-        sideBar.style.backgroundColor = "#0f0f2380";
+        sideBar.style.backgroundColor = "#212121";
         dark.forEach(function(elem) {elem.style.color = "#e0e0e0";});
+        pre.forEach(function(elem) {elem.style.backgroundColor = "#424242";});
       }
       else {
         themeButton.classList.add("active");
@@ -50,6 +52,7 @@ document.addEventListener('turbo:load', () => {
         document.body.classList.remove("bg-dark");
         sideBar.style.backgroundColor = "#193747";
         dark.forEach(function(elem) {elem.style.color = "#383838";});
+        pre.forEach(function(elem) {elem.style.backgroundColor = "#eee";});
       }
     })
   }

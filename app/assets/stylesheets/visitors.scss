@@ -43,6 +43,13 @@ body {
 	background-color: #121212;
 }
 
+.bg-silver {
+	background-color: #424242;
+}
+.trix-content {
+	width: 100%;
+	word-break: break-word;
+}
 
 #visitors-layout {
 	font-family: "AdventPro Medium";
@@ -187,11 +194,12 @@ body {
 					padding: 1rem;
 				}
 			}
-			.breadcrumb {
+			.breadcrumb, .breadcrumb a {
 				text-transform: uppercase;
 				text-align: left;
 				letter-spacing: 0.2rem;
 				color: #858585;
+				text-decoration: none;
 				.light-text {
 					opacity: 0.6;
 				}
@@ -330,6 +338,7 @@ body {
 				/* |       ////|*/
 				/*  ----------- */
 				.moria {
+					width: 100%;
 	    			align-items: flex-end;
 	    			> .side-description {
 	    				min-height: 3rem;
@@ -477,6 +486,10 @@ body {
 							color: gray;
 							font-size: 70%;
 						}
+					}
+					footer {
+						padding: 0;
+						width: 100%;
 					}
 				}
 			}

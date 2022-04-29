@@ -1,4 +1,4 @@
-<h6 class="breadcrumb">HOME / <span class="light-text">BLOG</span></h6>
+<h6 class="breadcrumb"><%= link_to 'HOME', root_path %> / <span class="light-text">BLOG</span></h6>
 <div class="middle-earth-container">
   <% @posts.each do |post| %>
     <%= link_to posts_show_path(post) do %>
