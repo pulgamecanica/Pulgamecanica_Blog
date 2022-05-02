@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   
   scope module: 'visitors' do
     root "posts#index"
+    get 'home/about'
+    get 'home/cv'
     get 'posts/index'
     get 'posts/:id/show', to: 'posts#show', as: "posts_show"
   end

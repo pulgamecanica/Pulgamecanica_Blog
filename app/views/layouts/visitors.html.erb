@@ -13,18 +13,25 @@
   <body class="bg-light text-dark" id="visitors-layout">
     <nav id="side_bar">
       <header>
-        <span>logo</span>
+        <span id="logo">
+          <%= render partial: 'visitors/svg/logo' %>
+          <%= render partial: 'visitors/svg/splash' %>
+        </span>
         <h1><%= link_to 'Pulgamecanica', root_path %><hr></h1>
         
-        <h6>Simple Blog</h6>
+        <h6>Coding Blog</h6>
       </header>
       <section>
+          <h4><%= link_to 'About', home_about_path %></h4>
           <h4><%= link_to 'Blog', root_path %></h4>
           <h4><%= link_to 'Showcase', root_path %></h4>
-          <h4><%= link_to 'CV', root_path %></h4>
+          <h4><%= link_to 'CV', home_cv_path %></h4>
       </section>
       <footer>
-        <h6>links...</h6>
+        <a href="https://github.com/pulgamecanica" target="blank"><%= render partial: 'visitors/svg/github' %></a>
+        <a href="mailto: andrehernandezrosado@gmail.com" target="blank"><%= render partial: 'visitors/svg/mail' %></a>
+        <a href="https://www.linkedin.com/in/andr%C3%A9-hern%C3%A1ndez-0572a1238/" target="blank"><%= render partial: 'visitors/svg/linkedin' %></a>
+        <a href="https://www.instagram.com/andy_maedhros/" target="blank"><%= render partial: 'visitors/svg/instagram' %></a>
       </footer>
     </nav>
     <main>
