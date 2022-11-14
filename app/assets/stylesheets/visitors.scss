@@ -330,7 +330,7 @@ body {
 				/* Flex Columns */
 				.argonath-column {
 					margin: 0;
-					padding: 0;
+					padding: 1;
 					/* BACKGROUND IMAGE */
 					.sword, .axe {
 						text-align: center;
@@ -389,8 +389,8 @@ body {
 					width: 100%;
 	    			align-items: flex-end;
 	    			> .side-description {
-	    				min-height: 3rem;
 	    				margin-left: 0.5rem;
+	    				padding-left: 0.5rem;
 						word-break: break-word;
 	    				border-left: 1.5px lightgray solid;
 	    			}
