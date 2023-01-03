@@ -24,3 +24,7 @@
 #   # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy-Report-Only
 #   # config.content_security_policy_report_only = true
 # end
+
+# Rails.application.config.content_security_policy do |policy|
+#   policy.script_src :self, 'https://www.googletagmanager.com', 'https://www.google-analytics.com'
+# end
