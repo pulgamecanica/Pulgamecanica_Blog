@@ -4,7 +4,6 @@ import "controllers"
 import "trix"
 import "@rails/actiontext"
 
-
 document.addEventListener("turbo:load", function(event) {
 	window.dataLayer = window.dataLayer || [];
 	function gtag(){dataLayer.push(arguments);}

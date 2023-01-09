@@ -78,3 +78,5 @@ gem 'sassc-rails'
 gem "aws-sdk-s3", require: false
 
 gem 'friendly_id', '~> 5.4.0'
+
+gem 'active_analytics'
