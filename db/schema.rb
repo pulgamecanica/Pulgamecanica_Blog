@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_08_234350) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_20_032225) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -87,6 +87,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_08_234350) do
     t.index ["post_id"], name: "index_elements_on_post_id"
   end
 
+  create_table "post_tags", force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.bigint "tag_id", null: false
+    t.index ["post_id"], name: "index_post_tags_on_post_id"
+    t.index ["tag_id"], name: "index_post_tags_on_tag_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -96,6 +103,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_08_234350) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_posts_on_author_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "title"
+    t.string "icon_svg"
+    t.string "color"
   end
 
   create_table "titles", force: :cascade do |t|
@@ -110,6 +123,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_08_234350) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "elements", "posts"
+  add_foreign_key "post_tags", "posts"
+  add_foreign_key "post_tags", "tags"
   add_foreign_key "posts", "authors"
   add_foreign_key "titles", "elements"
 end

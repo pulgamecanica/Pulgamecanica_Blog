@@ -32,3 +32,4 @@
 .env
 backup_imgs
 backup_imgs/*
+.DS_Store

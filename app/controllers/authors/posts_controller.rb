@@ -51,6 +51,7 @@ module Authors
     # GET /posts/1/edit
     def edit
       @element = @post.elements.build
+      @tag = @post.post_tags.build
     end
 
     # POST /posts or /posts.json

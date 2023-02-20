@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   devise_for :authors
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -13,6 +12,7 @@ Rails.application.routes.draw do
     get 'home/cv'
     get 'posts/index'
     get 'posts/:id/show', to: 'posts#show', as: "posts_show"
+    
   end
 
   scope module: 'authors' do
@@ -23,6 +23,12 @@ Rails.application.routes.draw do
       resources :elements, only: [:create, :update, :destroy] do
         resources :title, only: [:update]
       end
+      resources :post_tags, only: [:create, :update, :destroy] do
+      end
+    end
+    
+    resources :tags, only: [:index, :create, :update, :destroy] do
+
     end
   end
 end
