@@ -17,6 +17,23 @@
     <div><%= @alert %></div>
     <div><%= @notice %></div>
 
+    <nav class="icon-svg-sm authors-navbar gap-2 d-flex flex-column">
+      <span class="card">
+        <%= link_to the_shire_path, class: 'text-decoration-none btn-primary text-center btn-block p-0 bg-light' do %>
+          <%= svg_icon("lotr") %>
+        <% end %>
+      </span>
+      <span class="card">
+        <%= link_to posts_path, class: 'text-decoration-none btn-primary text-center btn-block p-0 bg-light' do %>
+          <%= svg_icon("blog") %>
+        <% end %>
+      </span>
+      <span class="card">
+        <%= link_to tags_path, class: 'text-decoration-none btn-primary text-center btn-block p-0 bg-light' do %>
+          <%= svg_icon("tag2") %>
+        <% end %>
+      </span>
+    </nav>
     <%= yield %>
   </body>
 </html>

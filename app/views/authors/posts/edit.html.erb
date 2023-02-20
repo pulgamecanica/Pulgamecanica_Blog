@@ -6,14 +6,14 @@
         <h6 class="card-title mb-0">Editing Post</h6>
       </div>
       <div class="row m-2 mb-0">
-        <% @post.tags.each do |tag| %>
+        <% @post_tags.each do |tag| %>
           <% if tag.persisted? %>
-            <div class="col-md-3 d-flex mb-2">
-              <span class="p-1 rounded d-flex" style="background-color: <%= tag.color %>;">
+            <div class="col-auto d-flex mb-2">
+              <span class="p-1 rounded d-flex m-2 mb-0 mt-0" style="background-color: <%= tag.color %>;">
                 <span style="margin-right: 0.5rem;"><%= tag.title %></span>
                 <span class="label label-default icon-svg-xs"><%= tag.icon_svg.html_safe %></span>
               </span>
-              <%= link_to "X", post_post_tag_path(@post, tag), class: 'btn btn-danger', data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this tag?"} %>
+              <%= link_to "X", remove_post_tags_path(@post, tag), class: 'btn btn-danger', data: {turbo_method: :delete } %>
             </div>
           <% end %>
         <% end %>
@@ -21,21 +21,15 @@
       <div class="card-body">
         <%= render 'form', post: @post %>
       </div>
-
       <div class="card-footer" data-controller="publish">
         <% if @post.published? %>
           <%= button_to [:unpublish, @post], {method: :post, class: 'btn btn-secondary btn-block'} do %>
             Unpublish
           <% end %>
-          <!-- STIMULUS -->
-          <!-- <a href="#" class="btn btn-secondary btn-block" data-action="click->publish#unpublish">Unpublish</a> -->
-        
         <% else %>
           <%= button_to [:publish, @post], {method: :post, class: 'btn btn-info btn-block'} do %>
             Publish
           <% end %>
-          <!-- STIMULUS -->
-          <!--<a href="#" class="btn btn-info btn-block" data-action="click->publish#publish">Publish</a> -->
         <% end %>
       </div>  
     </div>
@@ -46,7 +40,7 @@
       <%= form_with(model: [@post, @element], html: {class: 'float-left mr-1'}) do |form| %>
         <%= form.hidden_field :element_type, value: 'paragraph' %>
         <%= button_tag(type: 'submit', class: 'btn btn-secondary') do %>
-          <%= render partial: 'authors/svg/paragraph' %>
+          <%= svg_icon("paragraph") %>
         <% end %>
       <% end %>
       <%= form_with(model: [@post, @element]) do |form| %>
@@ -58,13 +52,13 @@
       <%= form_with(model: [@post, @element]) do |form| %>
         <%= form.hidden_field :element_type, value: 'title' %>
         <%= button_tag(type: 'submit', class: 'btn btn-secondary') do %>
-          <%= render partial: 'authors/svg/title' %>
+          <%= svg_icon("title") %>
         <% end %>
       <% end %>
       <%= form_with(model: [@post, @element]) do |form| %>
         <%= form.hidden_field :element_type, value: 'code_file' %>
         <%= button_tag(type: 'submit', class: 'btn btn-secondary') do %>
-          <%= render partial: 'authors/svg/attachment' %>
+          <%= svg_icon("attachment") %>
         <% end %>
       <% end %>
       <%= form_with(model: [@post, @element]) do |form| %>
@@ -73,24 +67,35 @@
           <%= svg_icon("add_pdf") %>
         <% end %>
       <% end %>
-      <%= form_with(model: [@post, @tag]) do |form| %>
-        <%= button_tag(type: 'submit', class: 'btn btn-secondary') do %>
+
+      <div class="dialog" data-controller="dialog" data-dialog-name-id="showTags">
+        <span class="dialog-bait btn btn-secondary p-3 mt-2" data-action="click->dialog#showDialog">
           <%= svg_icon("tag") %>
-        <% end %>
-      <% end %>
-    </div>
-<!-- 
-    <div class="dialog">
-      <div class="content-bait">
-        CLICK HERE TO SEE
-      </div>
-      <div class="content-hidden">
-        <div class="body">
-          THIS SHOULD NOT BE VISIBLE
+        </span>
+        <div class="dialog-body" id="showTags">
+          <div class="body text-center">
+            <h3> Tags: </h3>
+            <%= form_with(url: 'post_tags', html: {class: 'float-left mr-1'}) do |form| %>
+              <div class="row justify-content-center gap-1">
+                <% @tags.each do |tag| %>
+                  <label class="col-auto mb-3">
+                    <span>
+                      <span class="p-2 m-2 rounded" style="background-color: <%= tag.color %>;">
+                        <span style="margin-right: 0.5rem;"><%= tag.title %></span>
+                        <span class="label label-default icon-svg-xs"><%= tag.icon_svg.html_safe %></span>
+                      </span>
+                      <input value="<%= tag.id %>" type="checkbox" name="tag_ids[]" id="<%= tag.id %>">
+                    </span>
+                  </label>
+                <% end %>
+              </div>
+              <%= form.submit "Add Tags", class: 'btn btn-primary m-4' %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
- -->
+
     <div class="card mb-5 ">
       <div class="card-header text-right">
         <% if @post.published? %>
@@ -103,7 +108,7 @@
         <% if @post.elements.none? {|element| element.persisted? } %>
            <div class="p-3 text-center">
             <h2 class="text-secondary">
-              <%= render partial: 'authors/svg/light_bulb' %>
+              <%= svg_icon("light_bulb") %>
             </h2>
             <p>Try the icons above to create elements. </p>
            </div>
@@ -118,7 +123,7 @@
                       <% if element.content.present?%>
                         <%= element.content %>
                       <% else %>
-                        <div class="text-end bg-secondary d-inline-block p-1 rounded" style="float: right"><%= render partial: 'authors/svg/paragraph'%></div>
+                        <div class="text-end bg-secondary d-inline-block p-1 rounded" style="float: right"><%= svg_icon("paragraph") %></div>
                         Click to add content.
                       <% end %>
                     </div>
@@ -148,7 +153,7 @@
                         <%= link_to rails_blob_path(element.image, disposition: "attachment") do %>
                           <button class="btn btn-light text-dark">
                             <%= element.image.filename.to_s %>
-                            <%= render partial: 'authors/svg/download' %>
+                            <%= svg_icon("download") %>
                           </button>
                         <% end %>
                       <% end %>
@@ -194,11 +199,11 @@
                       <button class="btn btn-light text-dark">
                         <%= link_to rails_blob_path(element.code_file, disposition: "attachment"), {class: "text-dark",style: "text-decoration: none"} do %>
                           <%= element.code_file.filename.to_s %>
-                          <%= render partial: 'authors/svg/download' %>
+                          <%= svg_icon("download") %>
                         <% end %>
                       </button>
                     <% else %>
-                      <div class="text-end bg-secondary d-inline-block p-1 rounded" style="float: right"><%= render partial: 'authors/svg/attachment' %></div>
+                      <div class="text-end bg-secondary d-inline-block p-1 rounded" style="float: right"><%= svg_icon("attachment") %></div>
                       <%= form_with(model: [@post, element]) do |form| %>
                         <%= form.file_field :code_file %>
                         <div class="mt-3">
@@ -214,7 +219,7 @@
                     <div class="mb-4 paragraph">
                       <div class="p-3 paragraph-content">
                         <% if element.title.name.nil? || element.title.name.empty? %>
-                          <div class="text-end bg-secondary d-inline-block p-1 rounded" style="float: right"><%= render partial: 'authors/svg/title' %></div>
+                          <div class="text-end bg-secondary d-inline-block p-1 rounded" style="float: right"><%= svg_icon("title") %></div>
                           Click to add the title and choose the size.
                         <% else %>
                         <div class="d-flex justify-content-between mb-4">
@@ -224,20 +229,20 @@
                           <div>
                             <ul class="list-group">
                               <% if element.title.title_type == 0 %>
-                                <li class="list-group-item p-0 m-0 border-0 title-active"><%= render partial: 'authors/svg/title_0' %></li>
+                                <li class="list-group-item p-0 m-0 border-0 title-active"><%= svg_icon("title_0") %></li>
                               <% else %>
-                                <li class="list-group-item p-0 m-0 border-0 title-inactive"><%= render partial: 'authors/svg/title_0' %></li>
+                                <li class="list-group-item p-0 m-0 border-0 title-inactive"><%= svg_icon("title_0") %></li>
                               <% end %>
                               <% if element.title.title_type == 1 %>
-                                <li class="list-group-item p-0 m-0 border-0 title-active"><%= render partial: 'authors/svg/title_1' %></li>
+                                <li class="list-group-item p-0 m-0 border-0 title-active"><%= svg_icon("title_1") %></li>
                               <% else %>
-                                <li class="list-group-item p-0 m-0 border-0 title-inactive"><%= render partial: 'authors/svg/title_1' %></li>
+                                <li class="list-group-item p-0 m-0 border-0 title-inactive"><%= svg_icon("title_1") %></li>
 
                               <% end %>
                               <% if element.title.title_type == 2 %>
-                                <li class="list-group-item p-0 m-0 border-0 title-active"><%= render partial: 'authors/svg/title_2' %></li>
+                                <li class="list-group-item p-0 m-0 border-0 title-active"><%= svg_icon("title_2") %></li>
                               <% else %>
-                                <li class="list-group-item p-0 m-0 border-0 title-inactive"><%= render partial: 'authors/svg/title_2' %></li>
+                                <li class="list-group-item p-0 m-0 border-0 title-inactive"><%= svg_icon("title_2") %></li>
                               <% end %>
                             </ul>
                           </div>

@@ -15,7 +15,7 @@
         <div class="axe" style="background-image: url(<%= url_for(post.header_image) %>);" ></div>
       <% end %>
     <% else %>
-      <div class="sword"><%= render partial: 'visitors/svg/no_image' %></div>
+      <div class="sword icon-svg-md"><%= svg_icon("no_image") %></div>
     <% end %>
   </div>
 

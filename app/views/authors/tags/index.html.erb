@@ -5,9 +5,30 @@
 	<% end %>
 </div>
 <hr>
+<table class="table table-striped container text-center">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Title</th>
+      <th scope="col">Color</th>
+      <th scope="col">Icon</th>
+    </tr>
+  </thead>
+  <tbody>
+		<% @tags.each do |tag| %>
+			<tr>				
+      	<td><a href="#<%= tag.id.to_s + '_' +  tag.title %>"><%= tag.id %></a></td>
+      	<td><%= tag.title %></td>
+      	<td><span class="badge badge-primary" style="background-color: <%= tag.color %> ;"><%= tag.color %></span></td>
+      	<td class="icon-svg-xs"><%= tag.icon_svg.html_safe %></td>
+    	</tr>
+    <% end %>
+  </tbody>
+</table>
+<hr>
 <div class="row m-1">
 	<% @tags.each do |tag| %>
-		<div class="col-md-2 mb-4">
+		<div class="col-md-2 mb-4" id="<%= tag.id.to_s + '_' +  tag.title %>">
 	    	<div class="card">
 	    		<div class="card-header text-center">
 	    			<h6 class="icon-svg-md mb-0"><%= tag.icon_svg.html_safe %></h6>

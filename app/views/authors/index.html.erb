@@ -1,0 +1,38 @@
+<div class="container">
+	<div class="row justify-content-center p-4">
+		<div class="col-auto mb-4">
+			<div class="card icon-svg-md pt-2" style="width: 18rem; align-items: center;">
+          		<%= svg_icon("blog") %>
+				<div class="card-body text-center">
+					<hr>
+					<h4 class="card-title">Posts</h4>
+					<h5 class="card-text"><%= @posts.count %> published posts</h5>
+					<% @posts.order(:title).each do |post| %>
+						<hr>
+  						<%= link_to edit_post_path(post), class: 'text-decoration-none btn-light btn btn-block' do %>
+							<h6><%= post.title %></h6>
+						<% end %>
+					<% end %>
+				</div>
+				<%= link_to posts_path, class: 'text-decoration-none btn-primary text-center btn-block' do %>
+					<h5>Index</h5>
+				<% end %>
+			</div>
+		</div>
+		<div class="col-auto mb-4">
+			<div class="card icon-svg-md pt-2" style="width: 18rem; align-items: center;">
+          		<%= svg_icon("tag2") %>
+				<div class="card-body text-center row justify-content-center">
+					<h4 class="card-title">Tags</h4>
+					<h5 class="card-text"><%= @tags.count %> tags</h5>
+					<% @tags.order(:title).each do |tag| %>
+					  	<div class="col-auto d-flex mb-3 justify-content-center"><span class="p-2 rounded d-flex" style="background-color: <%= tag.color %>;"><span style="margin-right: 0.5rem;"><%= tag.title %></span><span class="label label-default icon-svg-xs"><%= tag.icon_svg.html_safe %></span></span></div>
+					<% end %>
+				</div>
+				<%= link_to tags_path, class: 'text-decoration-none btn-primary text-center btn-block' do %>
+					<h5>Edit Tags</h5>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

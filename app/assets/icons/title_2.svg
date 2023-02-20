@@ -1,8 +1,5 @@
 <svg viewBox="0 0 48 48">
 	<path class="title-svg-content" d="M16 8V40" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
 	<path class="title-svg-content" d="M6 6H25" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-	<path class="title-svg-content" d="M34.2261 24L39.0001 19.0166V40" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+	<path class="title-svg-content" d="M32 20H42L35 29C39 29 42 31 42 35C42 39 39 40 37 40C34.619 40 33 39 32 37.9" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
-
-
-

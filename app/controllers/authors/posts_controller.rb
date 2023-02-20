@@ -2,7 +2,7 @@ module Authors
   class PostsController < AuthorsController
     protect_from_forgery except: [:publish, :unpublish, :sort_elements]
     before_action :set_author
-    before_action :set_post, only: %i[ edit update destroy publish unpublish sort_elements]
+    before_action :set_post, only: %i[ edit update destroy publish unpublish sort_elements updateTags removeTag]
 
     def sort_elements
       elements_sort = JSON.parse(request.body.read());
@@ -38,6 +38,32 @@ module Authors
       end
     end
 
+    # POST /posts/1/post_tags
+    # Setup one or more tags
+    def updateTags
+      @post_tags = post_tag_params.map{|tag_id| @post.post_tags.build(tag_id: tag_id)}
+
+      respond_to do |format|
+        if @post_tags.each(&:save)
+          format.html { redirect_to edit_post_path(@post), notice: "Tag was added to the post successfully." }
+          format.json { render :edit, status: :created, location: @post }
+        else
+          format.html { redirect_to edit_post_path(@post), status: :unprocessable_entity, notice: @post_tags.each(&:errors) }
+          format.json { render json: @post_tags.each(&:errors), status: :unprocessable_entity }
+        end
+      end
+    end
+
+    # DELETE /posts/1/post_tags/1 or /posts/1/post_tags/1.json
+    def removeTag
+      @tag = @post.post_tags.find_by(tag_id: params[:tag_id]).destroy
+
+      respond_to do |format|
+        format.html { redirect_to edit_post_path(@post), notice: "Tag was succesfully removed." }
+        format.json { head :no_content }
+      end
+    end
+
     # GET /posts or /posts.json
     def index
       @posts = @author.posts
@@ -51,7 +77,8 @@ module Authors
     # GET /posts/1/edit
     def edit
       @element = @post.elements.build
-      @tag = @post.post_tags.build
+      @post_tags = @post.tags.order(:title)
+      @tags = Tag.all.filter{|t| not t.in?(@post_tags)}
     end
 
     # POST /posts or /posts.json
@@ -105,6 +132,10 @@ module Authors
       # Only allow a list of trusted parameters through.
       def post_params
         params.require(:post).permit(:title, :description, :header_image, :published, :data)
+      end
+
+      def post_tag_params
+        params.require(:tag_ids)
       end
   end
 end
