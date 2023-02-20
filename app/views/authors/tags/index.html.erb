@@ -1,6 +1,6 @@
 <h1 class="text-center m-4"> <%= @tags.count %> Tags</h1>
 <div class="row justify-content-center m-1">
-  <% @tags.each do |tag| %>
+  <% @tags.order(:title).each do |tag| %>
   	<div class="col-md-1 d-flex mb-3 justify-content-center"><span class="p-2 rounded d-flex" style="background-color: <%= tag.color %>;"><span style="margin-right: 0.5rem;"><%= tag.title %></span><span class="label label-default icon-svg-xs"><%= tag.icon_svg.html_safe %></span></span></div>
 	<% end %>
 </div>
