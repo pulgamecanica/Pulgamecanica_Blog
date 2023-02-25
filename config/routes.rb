@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     get 'home/about'
     get 'home/cv'
     get 'posts/index'
-    get 'posts/:id/show', to: 'posts#show', as: "posts_show"  
+    get 'posts/:id', to: 'posts#show', as: "posts_show"  
   end
 
   get 'the_shire',  to: 'authors#index'
