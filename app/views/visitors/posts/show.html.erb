@@ -42,7 +42,7 @@
 				                        <%= link_to rails_blob_path(element.code_file, disposition: "attachment"), {class: "phial_of_galadriel",style: "text-decoration: none"} do %>
 				                        		<div class="bywater">
 				                        			<p class="orc-vitality-drink phial_of_galadriel"><%= element.code_file.filename.to_s %></p>
-				                         		<span style="text-align: left;"><%= render partial: 'visitors/svg/download' %></span>
+				                         		<span style="text-align: left;"><%= svg_icon("download") %></span>
 				                         	</div>
 				                  		<% end %>
 				                    </button>
