@@ -4,7 +4,7 @@
     <div class="bywater">
       <p class="petty-dwarf-roots arkenstone"><%= post.published_at.strftime("%d %b %Y") %></p>
       <p class="petty-dwarf-roots arkenstone">
-        <%= render partial: 'visitors/svg/updated' %>
+        <%= svg_icon("updated") %>
         <%= post.updated_at.strftime("%Y %m") %>  
       </p>
     </div>

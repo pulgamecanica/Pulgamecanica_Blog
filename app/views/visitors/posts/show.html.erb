@@ -1,5 +1,5 @@
 <%= link_to posts_index_path, class: 'if_i_take_one_more_step_it_ll_be_the_farthest_away_from_home_you_have_ever_been' do %> 
-	<%= render partial: 'visitors/svg/go_back' %>
+	<%= svg_icon("go_back") %>
 <% end %>
 <h6 class="breadcrumb"><%= link_to 'HOME', root_path %> / <%= link_to 'BLOG', root_path %> / <span class="light-text"><%= @post.title %></span></h6>
 

@@ -126,7 +126,7 @@ module Authors
       end
       # Use callbacks to share common setup or constraints between actions.
       def set_post
-        @post = @author.posts.find(params[:id])
+        @post = @author.posts.friendly.find(params[:id])
       end
 
       # Only allow a list of trusted parameters through.

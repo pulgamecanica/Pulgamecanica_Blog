@@ -3,7 +3,7 @@
   <% @posts.each do |post| %>
     <%= link_to posts_show_path(post) do %>
      <%= render 'post_preview', post: post %>
-     <span class="book-of-mazarbul"><p><%= render partial: 'visitors/svg/book' %></p></span>
+     <span class="book-of-mazarbul"><p><%= svg_icon("book-of-mazarbul") %></p></span>
     <% end %>
 <% end %>
 </div>

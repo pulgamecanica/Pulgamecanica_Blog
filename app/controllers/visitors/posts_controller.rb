@@ -6,7 +6,7 @@ module Visitors
     end
 
     def show
-      @post = @posts.find(params[:id])
+      @post = @posts.friendly.find(params[:id])
       @downloadable_elements = @post.elements.downloadable_elements
       @full_img = true;
     end

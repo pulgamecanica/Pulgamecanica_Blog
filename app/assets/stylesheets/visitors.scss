@@ -28,6 +28,37 @@
    src: url('AdventPro-Thin.ttf');
 }
 
+
+@font-face {
+   font-family: 'Cormorant Garamond Regular';
+   src: url('CormorantGaramond-Regular.ttf');
+}
+
+@font-face {
+   font-family: 'Cormorant Garamond Bold';
+   src: url('CormorantGaramond-Bold.ttf');
+}
+
+@font-face {
+   font-family: 'Cormorant Garamond ExtraLight';
+   src: url('CormorantGaramond-ExtraLight.ttf');
+}
+
+@font-face {
+   font-family: 'Cormorant Garamond Medium';
+   src: url('CormorantGaramond-Medium.ttf');
+}
+
+@font-face {
+   font-family: 'Cormorant Garamond SemiBold';
+   src: url('CormorantGaramond-SemiBold.ttf');
+}
+
+@font-face {
+   font-family: 'Cormorant Garamond Thin';
+   src: url('CormorantGaramond-Thin.ttf');
+}
+
 body {
 	margin: 0;
 	padding: 0;
@@ -52,7 +83,7 @@ body {
 }
 
 #visitors-layout {
-	font-family: "AdventPro Medium";
+	font-family: 'Cormorant Garamond Medium';
 	font-size: 150%;
 	> nav {
 		position: fixed;
