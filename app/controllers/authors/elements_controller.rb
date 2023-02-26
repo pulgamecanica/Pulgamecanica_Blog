@@ -51,7 +51,7 @@ module Authors
       end
       
       def set_post
-        @post = @author.posts.find(params[:post_id])
+        @post = @author.posts.friendly.find(params[:post_id])
       end
 
       def set_element

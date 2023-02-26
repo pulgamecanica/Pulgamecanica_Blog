@@ -20,7 +20,7 @@ module Authors
 
     	def set_element
         @author = current_author
-        @post = @author.posts.find(params[:post_id])
+        @post = @author.posts.friendly.find(params[:post_id])
         @element = @post.elements.find(params[:element_id])
       end
       
