@@ -12,8 +12,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="bg-light authors-layout">
-
+  <body class="bg-light authors-layout" style="background-image: url(<%= asset_path("authors_bg" + (current_author.bg_choice.nil? ? "10" : current_author.bg_choice)  + ".jpg") %>);">
     <span id="authors-curtain"></span>
     
     <div><%= @alert %></div>
