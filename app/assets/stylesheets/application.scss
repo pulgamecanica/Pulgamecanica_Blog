@@ -15,6 +15,18 @@
  */
 
 .authors-layout {
+    background-image: image_url(asset_path('authors_bg4.jpeg')); 
+    background-position: center;
+    background-size: cover;
+    #authors-curtain {
+        z-index: -1;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(255, 255, 255, 0.6);
+    }
     .authors-navbar {
         position: fixed;
         background-color: rgba(42, 42, 42, 0.8);
@@ -27,6 +39,9 @@
         &:hover {
             transform: none;
         }
+    }
+    .row {
+        width: 100%;
     }
     form svg {
         width: 32px;
@@ -80,6 +95,9 @@
         &:hover {
             opacity: 1;
         }
+    }
+    #edit-card {
+
     }
     .post-card {
         .header-img {

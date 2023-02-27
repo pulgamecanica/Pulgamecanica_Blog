@@ -5,6 +5,8 @@ class Post < ApplicationRecord
   has_many :tags, through: :post_tags
   extend FriendlyId
   friendly_id :title, use: :slugged
-
   has_one_attached :header_image
+
+  validates :title, presence: true
+  validates :title, length: { in: 6..30 }
 end

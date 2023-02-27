@@ -1,32 +1,32 @@
 <h1 class="d-flex justify-content-between p-3">
-  <span>Posts</span>
-  <%= link_to 'New Post', new_post_path, class: 'btn btn-lg btn-primary'%>
+  <span>Projects</span>
+  <%= link_to 'New Project', new_project_path, class: 'btn btn-lg btn-primary'%>
 </h1>
-<% @posts.each do |post| %>
-  <%= link_to edit_post_path(post), class: 'text-decoration-none' do %>
+<% @projects.each do |project| %>
+  <%= link_to edit_project_path(project), class: 'text-decoration-none' do %>
     <div class="card mb-3 post-card">
         <div class="card-body">
           <div class="row">
             <div class="col-md-2">
-              <% if post.header_image.present? %>
-                <div class="header-img" style="background-image: url(<%= url_for(post.header_image) %>);"></div>
+              <% if project.background_image.present? %>
+                <div class="header-img" style="background-image: url(<%= url_for(project.background_image) %>);"></div>
               <% else %>
                 <div class="text-center icon-svg-md"><%= svg_icon("no_image") %></div>
               <% end %>
             </div>
             <div class="col-md-10">
               <div class="row m-2 gap-2 justify-content-end">
-                <% post.tags.each do |tag| %>
+                <% project.tags.each do |tag| %>
                   <span class="p-2 col-auto rounded text-dark" style="background-color: <%= tag.color %>;"><span style="margin-right: 0.5rem;"><%= tag.title %></span><span class="label label-default icon-svg-xs"><%= tag.icon_svg.html_safe %></span></span>
                 <% end %>
               </div>
-              <% if post.published? %>
+              <% if project.published? %>
                 <span class="badge badge-primary mb-3 bg-primary"> Published</span>
               <% elsif %>
                 <span class="badge badge-secondary mb-3 bg-secondary"> Unpublished</span>
               <% end %>
-              <h5 class="card-title mb-2 text-dark"><%= post.title %></h5>
-              <p class="text-secondary mb-0"><%= post.description %></p>
+              <h5 class="card-title mb-2 text-dark"><%= project.title %></h5>
+              <p class="text-secondary mb-0"><%= project.description %></p>
             </div>
           </div>
         </div>

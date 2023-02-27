@@ -1,0 +1,112 @@
+<div class="row m-0" id="edit-card">
+	<div class="col-md-8 mb-4">
+		<%= link_to 'Back', projects_path, class: 'btn btn-lg btn-dark m-3' %> 
+		<div class="card">
+			<div class="card-header">
+				<h6 class="card-title mb-0">Editing Project</h6>
+			</div>
+			<div class="row m-2 mb-0">
+				<% @project_tags.each do |tag| %>
+					<% if tag.persisted? %>
+						<div class="col-auto d-flex mb-2">
+							<span class="p-1 rounded d-flex m-2 mb-0 mt-0" style="background-color: <%= tag.color %>;">
+								<span style="margin-right: 0.5rem;"><%= tag.title %></span>
+								<span class="label label-default icon-svg-xs"><%= tag.icon_svg.html_safe %></span>
+							</span>
+							<%= link_to "X", remove_project_tags_path(@project, tag), class: 'btn btn-danger', data: {turbo_method: :delete } %>
+						</div>
+					<% end %>
+				<% end %>
+			</div>
+			<div class="card-body">
+				<%= render 'form', project: @project %>
+			</div>
+			<div class="card-footer" data-controller="publish">
+				<% if @project.published? %>
+					<%= button_to [:unpublish, @project], {method: :post, class: 'btn btn-secondary btn-block'} do %>
+						Unpublish
+					<% end %>
+				<% else %>
+					<%= button_to [:publish, @project], {method: :post, class: 'btn btn-info btn-block'} do %>
+						Publish
+					<% end %>
+				<% end %>
+			</div>  
+		</div>
+	</div>
+	<div class="col-md-4 gap-2" id="elements-card">
+		<div class="dialog d-inline" data-controller="dialog" data-dialog-name-id="showTags">
+      <span class="dialog-bait btn btn-secondary p-3 mt-2" data-action="click->dialog#showDialog">
+        <%= svg_icon("references") %>
+      </span>
+      <div class="dialog-body" id="showTags">
+        <div class="body text-center">
+          <h3> Tags: </h3>
+          <%= form_with(url: 'post_tags', html: {class: 'float-left mr-1'}) do |form| %>
+            <div class="row justify-content-center gap-1">
+              <% @tags.each do |tag| %>
+                <label class="col-auto mb-3">
+                  <span>
+                    <span class="p-2 m-2 rounded" style="background-color: <%= tag.color %>;">
+                      <span style="margin-right: 0.5rem;"><%= tag.title %></span>
+                      <span class="label label-default icon-svg-xs"><%= tag.icon_svg.html_safe %></span>
+                    </span>
+                    <input value="<%= tag.id %>" type="checkbox" name="tag_ids[]" id="<%= tag.id %>">
+                  </span>
+                </label>
+              <% end %>
+            </div>
+            <%= form.submit "Add Tags", class: 'btn btn-primary m-4' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+		<div class="dialog d-inline" data-controller="dialog" data-dialog-name-id="showTags">
+      <span class="dialog-bait btn btn-secondary p-3 mt-2" data-action="click->dialog#showDialog">
+        <%= svg_icon("tag") %>
+      </span>
+      <div class="dialog-body" id="showTags">
+        <div class="body text-center">
+          <h3> Tags: </h3>
+          <%= form_with(url: 'post_tags', html: {class: 'float-left mr-1'}) do |form| %>
+            <div class="row justify-content-center gap-1">
+              <% @tags.each do |tag| %>
+                <label class="col-auto mb-3">
+                  <span>
+                    <span class="p-2 m-2 rounded" style="background-color: <%= tag.color %>;">
+                      <span style="margin-right: 0.5rem;"><%= tag.title %></span>
+                      <span class="label label-default icon-svg-xs"><%= tag.icon_svg.html_safe %></span>
+                    </span>
+                    <input value="<%= tag.id %>" type="checkbox" name="tag_ids[]" id="<%= tag.id %>">
+                  </span>
+                </label>
+              <% end %>
+            </div>
+            <%= form.submit "Add Tags", class: 'btn btn-primary m-4' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="card mb-5 mt-1">
+      <div class="card-header text-right">
+        <% if @project.published? %>
+          <b>Published</b>
+        <% else %>
+          <span class="badge badge-danger mr-1 bg-danger">Unpublished</span>
+        <% end %>
+      </div>
+      <div class="card-body pt-5" data-controller="elements">
+        <% if @project.references.none? {|element| element.persisted? } %>
+           <div class="p-3 text-center">
+            <h2 class="text-secondary">
+              <%= svg_icon("light_bulb") %>
+            </h2>
+            <p>Try the icons above to add references and tags. </p>
+           </div>
+        <% else %>
+        	content
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

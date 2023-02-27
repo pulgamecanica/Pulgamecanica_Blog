@@ -25,7 +25,7 @@
 				<div class="card-body text-center row justify-content-center">
 					<h4 class="card-title">Tags</h4>
 					<h5 class="card-text"><%= @tags.count %> tags</h5>
-					<% @tags.order(:title).each do |tag| %>
+					<% @tags.order(:title).limit(5).each do |tag| %>
 					  	<div class="col-auto d-flex mb-3 justify-content-center"><span class="p-2 rounded d-flex" style="background-color: <%= tag.color %>;"><span style="margin-right: 0.5rem;"><%= tag.title %></span><span class="label label-default icon-svg-xs"><%= tag.icon_svg.html_safe %></span></span></div>
 					<% end %>
 				</div>
@@ -34,5 +34,6 @@
 				<% end %>
 			</div>
 		</div>
+		
 	</div>
 </div>

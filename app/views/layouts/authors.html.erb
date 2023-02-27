@@ -13,6 +13,8 @@
   </head>
 
   <body class="bg-light authors-layout">
+
+    <span id="authors-curtain"></span>
     
     <div><%= @alert %></div>
     <div><%= @notice %></div>
@@ -25,12 +27,17 @@
       </span>
       <span class="card">
         <%= link_to posts_path, class: 'text-decoration-none btn-primary text-center btn-block p-0 bg-light' do %>
-          <%= svg_icon("blog") %>
+          <%= svg_icon("page") %>
+        <% end %>
+      </span>
+      <span class="card">
+        <%= link_to projects_path, class: 'text-decoration-none btn-primary text-center btn-block p-0 bg-light' do %>
+          <%= svg_icon("favourite") %>
         <% end %>
       </span>
       <span class="card">
         <%= link_to tags_path, class: 'text-decoration-none btn-primary text-center btn-block p-0 bg-light' do %>
-          <%= svg_icon("tag2") %>
+          <%= svg_icon("tag1") %>
         <% end %>
       </span>
     </nav>

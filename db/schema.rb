@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_25_091746) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_26_232653) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -118,6 +118,36 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_25_091746) do
     t.index ["slug"], name: "index_posts_on_slug", unique: true
   end
 
+  create_table "project_tags", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.bigint "tag_id", null: false
+    t.index ["project_id"], name: "index_project_tags_on_project_id"
+    t.index ["tag_id"], name: "index_project_tags_on_tag_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "link"
+    t.integer "rank"
+    t.integer "order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "author_id", null: false
+    t.boolean "published"
+    t.datetime "published_at"
+    t.string "slug"
+    t.index ["author_id"], name: "index_projects_on_author_id"
+    t.index ["slug"], name: "index_projects_on_slug", unique: true
+  end
+
+  create_table "references", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.string "name"
+    t.text "link"
+    t.index ["project_id"], name: "index_references_on_project_id"
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "title"
     t.string "icon_svg"
@@ -139,5 +169,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_25_091746) do
   add_foreign_key "post_tags", "posts"
   add_foreign_key "post_tags", "tags"
   add_foreign_key "posts", "authors"
+  add_foreign_key "project_tags", "projects"
+  add_foreign_key "project_tags", "tags"
+  add_foreign_key "projects", "authors"
+  add_foreign_key "references", "projects"
   add_foreign_key "titles", "elements"
 end

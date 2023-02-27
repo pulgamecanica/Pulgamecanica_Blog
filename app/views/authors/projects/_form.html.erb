@@ -1,0 +1,41 @@
+<%= form_with(model: project, local: false) do |form| %>
+  
+  <div class="form-group">
+    <% project.errors.where(:title).each do |error| %>
+      <h6 class="text-danger d-block mt-1"><%= error.full_message %></h6>
+    <% end %>
+    <%= form.label :title %>
+    <%= form.text_field :title, class: 'form-control'  %>
+  </div>
+
+  <div class="form-group">
+    <% project.errors.where(:description).each do |error| %>
+      <h6 class="text-danger d-block mt-1"><%= error.full_message %></h6>
+    <% end %>
+    <%= form.label :description %>
+    <%= form.text_area :description, class: 'form-control' %> 
+  </div>
+
+  <div class="form-group">
+    <% project.errors.where(:rank).each do |error| %>
+      <h6 class="text-danger d-block mt-1"><%= error.full_message %></h6>
+    <% end %>
+    <%= form.label :rank %>
+    <%= form.number_field :rank, class: 'form-control' %>
+  </div>
+
+  <div class="form-group text-center">
+    <%= form.label :background_image, class: 'd-block mt-2' %>
+    <div class="mt-1">
+      <% if project.background_image.present? %>
+        <small class="d-block">Current image:</small>
+        <%= image_tag(project.background_image, width: '25%') %>
+      <% end %>
+    </div>
+    <%= form.file_field :background_image, class: 'form-control mt-2' %>
+  </div>
+
+  <div class="action mt-3">
+    <%= form.submit class: 'btn btn-primary btn-block' %>
+  </div>
+<% end %>
