@@ -53,8 +53,11 @@ Although the arquitechture is more like a social network. But I restricted the u
     
     Tags:
     - You can add any tag you created before to your posts.
-    
-  ***
+
+![image](https://user-images.githubusercontent.com/28810331/222525115-7e833e19-31e2-45c6-a990-558af0d4c04e.png)
+
+
+***
   
 ### Tags
 ![image](https://user-images.githubusercontent.com/28810331/222520904-d8b1f749-6802-479b-a494-a2f0170d8793.png)
