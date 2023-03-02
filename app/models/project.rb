@@ -9,7 +9,8 @@ class Project < ApplicationRecord
   has_many_attached :project_images
 
   validates :title, :rank, :description, presence: true
-  validates :title, length: { in: 6..20 }
+  validates :title, length: { in: 2..20 }
   validates :description, length: { in: 15..350 }
-  validates :rank, inclusion: 1..5
+  validates :rank, numericality: { in: 0..5 }
+
 end

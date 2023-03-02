@@ -1,5 +1,43 @@
+<div class="curtain" data-controller="close" data-action="click->close#closeAnimation"></div>
+<div class="errors-animation" id="closeAnimationsDialog">
+	<div class="scene">
+	  <div class="cube">
+	    <div class="cube__face cube__face--front">
+				<div class="text-light">
+					Welcome <%= current_author.email %>
+				</div>
+			</div>
+	    <div class="cube__face cube__face--back">
+	    	<div><%= image_tag("gandalf.gif") %></div>
+	    </div>
+	    <div class="cube__face cube__face--right">
+	    	<div><%= image_tag("appa.gif") %></div>
+	    </div>
+	    <div class="cube__face cube__face--left">
+	    	<div><%= image_tag("totoro.gif") %></div>
+	    </div>
+	    <div class="cube__face cube__face--top">
+	    	<div><%= image_tag("cello.gif") %></div>
+	    </div>
+	    <div class="cube__face cube__face--bottom">
+	    	<div><%= image_tag("ghostError.gif") %></div>
+	    </div>
+	  </div>
+	</div>
+</div>
+
 <div class="container">
 	<div class="row justify-content-center p-4">
+		<div class="col-auto mb-4">
+			<div class="card icon-svg-md pt-2" style="width: 18rem; align-items: center;">
+				<%= svg_icon("gear") %>
+				<div class="card-body text-center icon-svg-sm">
+					<hr>
+					<h4 class="card-title">Settings</h4>
+    				<%= render 'bg_form', tag_url: "project_tags" %>					
+				</div>
+			</div>
+		</div>
 		<div class="col-auto mb-4">
 			<div class="card icon-svg-md pt-2" style="width: 18rem; align-items: center;">
           		<%= svg_icon("blog") %>
@@ -34,6 +72,5 @@
 				<% end %>
 			</div>
 		</div>
-		
 	</div>
 </div>

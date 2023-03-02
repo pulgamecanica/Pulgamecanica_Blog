@@ -1,0 +1,21 @@
+<div class="dialog d-inline" data-controller="dialog" data-dialog-name-id="changeBackground">
+  <span class="dialog-bait btn btn-success" data-action="click->dialog#showDialog">
+	<%= svg_icon("background") %>
+  </span>
+  <div class="dialog-body" id="changeBackground">
+    <div class="body text-center">
+      <h3> Background </h3>
+      <h6>Choose an option between 1 and 10</h6>
+      <%= form_with(model: current_author, method: "PATCH") do |form| %>
+		<div class="form-group">
+			<% current_author.errors.where(:bg_choice).each do |error| %>
+			  <h6 class="text-danger d-block mt-1"><%= error.full_message %></h6>
+			<% end %>
+			<%= form.label :bg_choice %>
+			<%= form.number_field :bg_choice, class: 'form-control'  %>
+		</div>
+        <%= form.submit "Change", class: 'btn btn-primary m-4' %>
+      <% end %>
+    </div>
+  </div>
+</div>

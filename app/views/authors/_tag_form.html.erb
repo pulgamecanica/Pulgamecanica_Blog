@@ -1,0 +1,26 @@
+<div class="dialog d-inline" data-controller="dialog" data-dialog-name-id="showTags">
+  <span class="dialog-bait btn btn-secondary p-3 mt-2" data-action="click->dialog#showDialog">
+    <%= svg_icon("tag") %>
+  </span>
+  <div class="dialog-body" id="showTags">
+    <div class="body text-center">
+      <h3> Tags: </h3>
+      <%= form_with(url: tag_url) do |form| %>
+        <div class="row justify-content-center gap-1">
+          <% @tags.each do |tag| %>
+            <label class="col-auto mb-3">
+              <span>
+                <span class="p-2 m-2 rounded" style="background-color: <%= tag.color %>;">
+                  <span style="margin-right: 0.5rem;"><%= tag.title %></span>
+                  <span class="label label-default icon-svg-xs"><%= tag.icon_svg.html_safe %></span>
+                </span>
+                <input value="<%= tag.id %>" type="checkbox" name="tag_ids[]" id="<%= tag.id %>">
+              </span>
+            </label>
+          <% end %>
+        </div>
+        <%= form.submit "Add Tags", class: 'btn btn-primary m-4' %>
+      <% end %>
+    </div>
+  </div>
+</div>

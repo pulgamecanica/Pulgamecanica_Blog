@@ -11,3 +11,4 @@ document.addEventListener("turbo:load", function(event) {
 
 	gtag('config', 'G-WKGKSFVDXY', {'page_location': event.detail.url});
 }, false)
+

@@ -49,11 +49,6 @@ module Authors
     end
 
     private
-
-      def set_author
-        @author = current_author
-      end
-      
       def set_tag
         @tag = Tag.find(params[:id])
       end

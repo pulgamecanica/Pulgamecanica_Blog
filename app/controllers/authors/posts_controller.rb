@@ -120,10 +120,6 @@ module Authors
     end
 
     private
-
-      def set_author
-        @author = current_author
-      end
       # Use callbacks to share common setup or constraints between actions.
       def set_post
         @post = @author.posts.friendly.find(params[:id])

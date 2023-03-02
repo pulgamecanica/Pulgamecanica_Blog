@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # Active Analtics
   mount ActiveAnalytics::Engine, at: "analytics"
   # Admmin
+  resources :authors, only: [:update]
   get 'the_shire',  to: 'authors#index'
   scope module: 'authors' do
     # POSTS

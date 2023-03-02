@@ -12,7 +12,8 @@ import { Controller } from "@hotwired/stimulus"
  *    data-controller="dialog"
  *    data-dialog-name-id="showTags"
  *  >
- *    <*>
+ *    <*
+ *      data-action="click->dialog#showDialog">
  *      ...Content Show, click this to display Dialog
  *    </*>
  *
@@ -32,7 +33,6 @@ export default class extends Controller {
     element.style.display = "flex";
     element.addEventListener('click', (event) => {
       let elementClosest = event.target.closest("div");
-      console.log("Closest", elementClosest);
       if (elementClosest != element) return;
       element.style.display = "none";
     });

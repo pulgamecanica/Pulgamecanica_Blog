@@ -44,12 +44,7 @@ module Authors
       end
     end
 
-    private
-
-      def set_author
-        @author = current_author
-      end
-      
+    private      
       def set_post
         @post = @author.posts.friendly.find(params[:post_id])
       end

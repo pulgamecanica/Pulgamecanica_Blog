@@ -1,3 +1,34 @@
+<% if @reference.errors.any? %>
+	<div class="curtain" data-controller="close" data-action="click->close#closeAnimation"></div>
+	<div class="errors-animation" id="closeAnimationsDialog">
+		<div class="scene">
+		  <div class="cube">
+		    <div class="cube__face cube__face--front">
+					<div class="text-danger">
+						<% @reference.errors.each do |error| %>
+							<p><%= error.full_message %></p>
+						<% end %>
+					</div>
+				</div>
+		    <div class="cube__face cube__face--back">
+		    	<div><%= image_tag("warningAnimation.gif") %></div>
+		    </div>
+		    <div class="cube__face cube__face--right">
+		    	<div><%= svg_icon("errorFace") %></div>
+		    </div>
+		    <div class="cube__face cube__face--left">
+					<div><%= svg_icon("errorFace") %></div>
+		    </div>
+		    <div class="cube__face cube__face--top">
+		    	<div><%= image_tag("windowsError.gif") %></div>
+		    </div>
+		    <div class="cube__face cube__face--bottom">
+		    	<div><%= image_tag("ghostError.gif") %></div>
+		    </div>
+		  </div>
+		</div>
+	</div>
+<% end %>
 <div class="row m-0" id="edit-card">
 	<div class="col-md-8 mb-4">
 		<%= link_to 'Back', projects_path, class: 'btn btn-lg btn-dark m-3' %> 
@@ -35,58 +66,8 @@
 		</div>
 	</div>
 	<div class="col-md-4 gap-2" id="elements-card">
-		<div class="dialog d-inline" data-controller="dialog" data-dialog-name-id="showTags">
-      <span class="dialog-bait btn btn-secondary p-3 mt-2" data-action="click->dialog#showDialog">
-        <%= svg_icon("references") %>
-      </span>
-      <div class="dialog-body" id="showTags">
-        <div class="body text-center">
-          <h3> Tags: </h3>
-          <%= form_with(url: 'post_tags', html: {class: 'float-left mr-1'}) do |form| %>
-            <div class="row justify-content-center gap-1">
-              <% @tags.each do |tag| %>
-                <label class="col-auto mb-3">
-                  <span>
-                    <span class="p-2 m-2 rounded" style="background-color: <%= tag.color %>;">
-                      <span style="margin-right: 0.5rem;"><%= tag.title %></span>
-                      <span class="label label-default icon-svg-xs"><%= tag.icon_svg.html_safe %></span>
-                    </span>
-                    <input value="<%= tag.id %>" type="checkbox" name="tag_ids[]" id="<%= tag.id %>">
-                  </span>
-                </label>
-              <% end %>
-            </div>
-            <%= form.submit "Add Tags", class: 'btn btn-primary m-4' %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-		<div class="dialog d-inline" data-controller="dialog" data-dialog-name-id="showTags">
-      <span class="dialog-bait btn btn-secondary p-3 mt-2" data-action="click->dialog#showDialog">
-        <%= svg_icon("tag") %>
-      </span>
-      <div class="dialog-body" id="showTags">
-        <div class="body text-center">
-          <h3> Tags: </h3>
-          <%= form_with(url: 'post_tags', html: {class: 'float-left mr-1'}) do |form| %>
-            <div class="row justify-content-center gap-1">
-              <% @tags.each do |tag| %>
-                <label class="col-auto mb-3">
-                  <span>
-                    <span class="p-2 m-2 rounded" style="background-color: <%= tag.color %>;">
-                      <span style="margin-right: 0.5rem;"><%= tag.title %></span>
-                      <span class="label label-default icon-svg-xs"><%= tag.icon_svg.html_safe %></span>
-                    </span>
-                    <input value="<%= tag.id %>" type="checkbox" name="tag_ids[]" id="<%= tag.id %>">
-                  </span>
-                </label>
-              <% end %>
-            </div>
-            <%= form.submit "Add Tags", class: 'btn btn-primary m-4' %>
-          <% end %>
-        </div>
-      </div>
-    </div>
+    <%= render 'tag_form', tag_url: "project_tags" %>
+    <%= render 'reference_form', project: @project, reference: @reference %>
     <div class="card mb-5 mt-1">
       <div class="card-header text-right">
         <% if @project.published? %>
@@ -104,7 +85,18 @@
             <p>Try the icons above to add references and tags. </p>
            </div>
         <% else %>
-        	content
+        	<div class="row gap-2 m-0">
+	        	<% @project.references.each do |ref| %>
+	        		<% if ref.persisted? %>
+	        			<div class="col-auto card btn">
+	        				<div class="pt-2 pb-2">
+	        					<span class="icon-svg-xs me-2 btn-secondary btn"><%= svg_icon("references") %></span>
+	        					<a class="btn btn-primary" href="<%= ref.link %>" target="blank"><%= ref.name %></a>
+	        				</div>
+	        			</div>
+	        		<% end %>
+	        	<% end %>
+        	</div>
         <% end %>
       </div>
     </div>
