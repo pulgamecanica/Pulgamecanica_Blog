@@ -16,10 +16,10 @@ module Authors
       @post.update(published: true, published_at: Time.now)
       respond_to do |format|
         if @post.save
-          format.html { redirect_to edit_post_path(@post), notice: "Post was successfully created." }
+          format.html { redirect_to edit_post_path(@post) }
           format.json { render :edit, status: :created, location: @post }
         else
-          format.html { render :new, status: :unprocessable_entity }
+          format.html { render :edit, status: :unprocessable_entity }
           format.json { render json: @post.errors, status: :unprocessable_entity }
         end
       end
@@ -29,10 +29,10 @@ module Authors
       @post.update(published: false, published_at: nil)    
       respond_to do |format|
         if @post.save
-          format.html { redirect_to edit_post_path(@post), notice: "Post was successfully created." }
+          format.html { redirect_to edit_post_path(@post)}
           format.json { render :edit, status: :created, location: @post }
         else
-          format.html { render :new, status: :unprocessable_entity }
+          format.html { render :edit, status: :unprocessable_entity }
           format.json { render json: @post.errors, status: :unprocessable_entity }
         end
       end
@@ -103,7 +103,7 @@ module Authors
           format.html { redirect_to edit_post_path(@post), notice: "Post was successfully updated." }
           format.json { render :edit, status: :ok, location: @post }
         else
-          format.html { render :edit, status: :unprocessable_entity }
+          format.html { redirect_to edit_post_path(@post), status: :unprocessable_entity }
           format.json { render json: @post.errors, status: :unprocessable_entity }
         end
       end

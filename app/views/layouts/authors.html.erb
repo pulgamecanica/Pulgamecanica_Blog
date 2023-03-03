@@ -15,8 +15,11 @@
   <body class="bg-light authors-layout" style="background-image: url(<%= asset_path("authors_bg" + (current_author.bg_choice.nil? ? "4" : current_author.bg_choice.to_s)  + ".jpg") %>);">
     <span id="authors-curtain"></span>
     
-    <div><%= alert %></div>
-    <div><%= notice %></div>
+    <div class="alert-box"><%= alert %></div>
+    
+    <% if not notice.nil? %>
+      <div class="notice-box"><%= notice %></div>
+    <% end %>
 
     <nav class="icon-svg-sm authors-navbar gap-2 d-flex flex-column">
       <span class="card">

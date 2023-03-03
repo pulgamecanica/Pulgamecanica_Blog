@@ -52,7 +52,26 @@
 						<% end %>
 					<% end %>
 				</div>
-				<%= link_to posts_path, class: 'text-decoration-none btn-primary text-center btn-block' do %>
+				<%= link_to posts_path, class: 'text-decoration-none btn-primary rounded text-center btn-block' do %>
+					<h5>Index</h5>
+				<% end %>
+			</div>
+		</div>
+		<div class="col-auto mb-4">
+			<div class="card icon-svg-md pt-2" style="width: 18rem; align-items: center;">
+          		<%= svg_icon("projects") %>
+				<div class="card-body text-center">
+					<hr>
+					<h4 class="card-title">Projects</h4>
+					<h5 class="card-text"><%= @projects.count %> published projects</h5>
+					<% @projects.order(:title).each do |project| %>
+						<hr>
+  						<%= link_to edit_project_path(project), class: 'text-decoration-none btn-light btn btn-block' do %>
+							<h6><%= project.title %></h6>
+						<% end %>
+					<% end %>
+				</div>
+				<%= link_to posts_path, class: 'text-decoration-none btn-primary text-center rounded btn-block' do %>
 					<h5>Index</h5>
 				<% end %>
 			</div>
@@ -67,7 +86,7 @@
 					  	<div class="col-auto d-flex mb-3 justify-content-center"><span class="p-2 rounded d-flex" style="background-color: <%= tag.color %>;"><span style="margin-right: 0.5rem;"><%= tag.title %></span><span class="label label-default icon-svg-xs"><%= tag.icon_svg.html_safe %></span></span></div>
 					<% end %>
 				</div>
-				<%= link_to tags_path, class: 'text-decoration-none btn-primary text-center btn-block' do %>
+				<%= link_to tags_path, class: 'text-decoration-none btn-primary text-center rounded btn-block' do %>
 					<h5>Edit Tags</h5>
 				<% end %>
 			</div>

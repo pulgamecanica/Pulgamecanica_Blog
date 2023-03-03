@@ -17,6 +17,7 @@
 .authors-layout {
     background-position: center;
     background-size: cover;
+    height: 100vh;
     #authors-curtain {
         z-index: -1;
         position: fixed;
@@ -129,6 +130,23 @@
         transform: translate(-50%, -50%);
         z-index: 1;
     }
+    .notice-box {
+        position: fixed;
+        top: -100px;
+        right: 0%;
+        color: white;
+        background-color: rgba(180, 230, 70, 0.75);
+        padding: 1rem;
+        margin: 0.5rem;
+        border-radius: 1rem;
+        z-index: 10;
+        animation: showAlert 5s ease-in-out 1;
+        &:hover {
+            top: 0;
+            animation: none;
+            background-color: rgba(180, 230, 70, 1);
+        }
+    }
 }
 
 @keyframes rotateCube {
@@ -151,6 +169,19 @@
     transform: translateZ(-550px) rotate(0, 0, 0);
   }
 }
+
+@keyframes showAlert {
+  0% {
+    top: 0px;
+  }
+  50% {
+    top: 0px;
+  }
+  100% {
+    top: -100px;
+  }
+}
+
 
 // @keyframes fadeout {
 //     0% {
