@@ -326,7 +326,7 @@
     }
     .dialog-body, .dialog-body-show {
         cursor: zoom-out;
-        z-index: 2;
+        z-index: 111;
         background-color: rgba(42, 42, 42, 0.6);
         .body {
             cursor: auto;

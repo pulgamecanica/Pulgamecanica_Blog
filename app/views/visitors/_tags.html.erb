@@ -1,0 +1,7 @@
+<div class="edoras">
+  <% element.tags.each do |tag| %>
+    <span class="saddle" style="background-color: <%= tag.color %>;">
+      <%= tag.title %><%= tag.icon_svg.html_safe %>
+    </span>
+  <% end %>
+</div>

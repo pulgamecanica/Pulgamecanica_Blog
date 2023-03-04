@@ -453,6 +453,165 @@ body {
 	    				width: 50vw;
 	    			}
 				}
+				.edoras {
+					gap: 0.25rem;
+					display: flex;
+					justify-content: flex-start;
+					margin: 0.75rem;
+					flex-wrap: wrap;
+					max-width: 300px;
+					.saddle {
+						display: flex;
+						gap: 0.25rem;
+						border-radius: 0.25rem;
+						height: 20px;
+						padding: 0 0.25rem;
+						font-size: 15px;
+						align-items: center;
+						svg {
+							width: 15px;
+						}
+					}
+				}
+				.mordor {
+					// background-color: rgba(20, 10, 120, 0.5);
+					justify-content: space-around !important;
+					text-align: center;
+					width:90%;
+					gap: 2rem;
+					position: relative;
+				}
+				.minas-morgul {
+					// background-color: rgba(42, 42, 42, .2);
+					background-color: rgba(230, 200, 184, 0.5);
+					border-radius: 1rem;
+					min-height: 200px;
+					min-width: 20vw;
+					position: relative;
+					overflow: hidden;
+					cursor: pointer;
+					box-shadow: 12px 12px 2px 1px rgba(154, 209, 208, .2);
+					&:hover {
+						transform: scale(0.99);
+					}
+					.sword {
+						text-align: center;
+						width: auto;
+						background-size: cover;
+         			background-position: center;
+         			border-radius: 1rem 1rem 0 0;
+         			overflow: hidden;
+					}
+					.sword {
+						background-color: rgba(25, 71, 72, 0.75);
+						height: 15vh;
+						transition: 1s ease-in;
+						&:hover {
+							height: 30vh;
+						}
+					}
+					.axe {
+						margin-top: 0.5rem;
+						font-size: 30px;
+						border-bottom: 1px gray solid;
+						margin-bottom: 0;
+						display: inline;
+					}
+					.shield {
+						max-width: 300px;
+						font-size: 20px;
+						display: block;
+						padding: 0.5rem 0;
+						margin: auto;
+						text-align: center;
+						word-break: break-word;
+					}
+					.dagger {
+						display: flex;
+						justify-content: space-around;
+						padding: 0.5rem;
+						background-color: rgba(25,55,71, 0.9);
+						&:hover svg {
+							fill: white;
+						}
+					}
+				}
+				.sauron {
+					cursor: auto;
+					position: relative;
+	            min-width: 60vw;
+	            min-height: 80vh;
+	            border-radius: 0.25rem;
+	            background-color: rgba(242, 242, 242, 0.95);
+	            overflow: scroll;
+					.sword {
+						height: 60%;
+						width: 100%;
+	            	border-radius: 0.25rem 0.25rem 0 0;
+						background-repeat: no-repeat;
+						background-position: center;
+						background-size: cover;
+						position: absolute;
+						top: 0;
+					}
+					.north-downs {
+						position: absolute;
+						top: 0%;
+					}
+					.elendilmir {
+						position: absolute;
+						top: 50%;
+						right: 0%;
+						padding-right: 1rem;
+						img {
+							width: 20px;
+							height: auto;
+						}
+					}
+					.azog {
+						// background-color: rgba(102, 10, 230, 0.5);
+						position: absolute;
+						top: 60%;
+						left: 50%;
+						transform: translateX(-50%);
+						width: 95%;
+					}
+					.thror {
+						display: flex;
+						flex-direction: row;
+						align-items: start;
+						flex-wrap: wrap;
+						font-size: 20px;
+						gap: 0.5rem;
+						width: 40%;
+						svg {
+							display: block;
+							height: 20px;
+						}
+						a, svg{
+							padding: 0.15rem;
+							border-radius: 0.15rem;
+							background-color: rgba(210, 220, 255, 0.5);
+						}
+					}
+					.mount-doom {
+						position: absolute;
+						top: 0;
+						right: 0;
+						z-index: 1;
+						margin: 0.25rem;
+						cursor: pointer;
+						display: flex;
+						background-color: rgba(42, 42, 42, 0.6);
+						border-radius: 0.5rem;
+						&:hover svg * {
+							fill: darkgray;
+						}
+						svg * {
+							fill: white;
+						}
+					}
+				}
 				/* MIRKWOOD */
 				/*  ___________ */
 				/* | ///T      |*/
@@ -520,6 +679,15 @@ body {
 					margin-left: 1rem;
 				}
 				.middle-earth-container {
+					.sauron {
+						width: 100vw;
+						.elendilmir {
+							top: 30%;
+						}
+						.azog {
+							top: 40%;
+						}
+					}
 					.book-of-mazarbul {
 						display: none;
 					}
@@ -557,6 +725,9 @@ body {
 							display: none;
 						}
 					}
+					.mordor {
+						width: 100vw;
+					}
 					.moria {
 						padding: 0;
 						.side-description:before {
@@ -575,13 +746,3 @@ body {
 		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
