@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
+  #devise
   devise_for :authors
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  # Defines the root path route ("/")
 
   # Active Analtics
   mount ActiveAnalytics::Engine, at: "analytics"
+  
   # Admmin
   resources :authors, only: [:update]
   get 'the_shire',  to: 'authors#index'
@@ -33,9 +33,12 @@ Rails.application.routes.draw do
     # TAGS
     resources :tags, only: [:index, :create, :update, :destroy]
   end
+  
   # Visitors
   scope module: 'visitors' do
     root "posts#index"
+    match "/404", :to => "errors#not_found", :via => :all
+    match "/500", :to => "errors#internal_server_error", :via => :all
     get 'home/about'
     get 'home/projects'
     get 'home/cv'

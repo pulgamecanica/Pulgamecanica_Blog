@@ -9,4 +9,8 @@ class Post < ApplicationRecord
 
   validates :title, presence: true
   validates :title, length: { in: 6..30 }
+
+  scope :published_posts, -> do
+    where(published: true).order(published_at: :desc)
+  end
 end

@@ -1,0 +1,20 @@
+<div class="not-found">
+	<h1>404 Not Found Error</h1>
+</div>
+<div class="posts">
+	<h2>Visit my posts</h2>
+	<div class="gallery">
+		<% @posts.each do |post| %>
+    		<%= link_to post_path(post), class: "gallery-item" do %>
+				<% if post.header_image.present? %>
+	      			<%= image_tag(post.header_image, size: "150x100", alt: "post image", class: "gallery-image")%>
+	      		<% else %>
+	      			<%= image_tag("author_img.jpg", size: "150x100", alt: "post image", class: "gallery-image")%>
+				<% end %>
+				<h3 class="gallery-title"><%= post.title %></h3>
+				<hr>
+				<p class="gallery-description"><%= post.description %></p>
+			<% end %>
+		<% end %>
+	</div>
+</div>

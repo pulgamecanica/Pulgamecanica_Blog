@@ -1,0 +1,2 @@
+module Visitors::ErrorsHelper
+end

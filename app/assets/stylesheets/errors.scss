@@ -1,0 +1,106 @@
+body {
+	width: 100vw;
+	min-height: 100vh;
+	background-color: rgb(25,55,71);
+	.errors-animation-container {
+		position: fixed;
+		.errors-animation {
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+	}
+	.error_nav {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: darkgray;
+		text-decoration: none;
+		gap: 1rem;
+		padding: 1rem;
+		&:hover {
+			opacity: 0.9;
+			h1 {
+				color: lightgray;
+			}
+		}
+		img {
+			border-radius: 1rem;
+		}
+	}
+	@keyframes 	move_background {
+	  	from {background-position-x: 0%;}
+	  	to {background-position-x: 130px;}
+	}
+	.not-found {
+		background-color: orange;
+		text-align: center;
+		display: block;
+		margin: auto;
+		background-image: image_url(asset_path('ghostError.gif'));
+		background-size: contain;
+		background-position: center;
+		animation: move_background 2s linear infinite;
+		h1 {
+			padding: 3rem 0;
+			background-color: rgba(0, 0, 0, 0.5);
+			color: white;
+		}
+	}
+	.posts {
+		padding: 1rem;
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		* {
+			margin: 0;
+			color: rgba(255,255,255,0.75);
+		}
+		h2 {
+			border-radius: 1rem;
+			border: 1.5px solid white;
+			padding: 0.5rem;
+			margin-bottom: 1rem;
+		}
+		.gallery {
+			display: flex;
+			align-items: start;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 3rem;
+			.gallery-item {
+				display: flex;
+				padding: 0.5rem;
+				border-radius: 0.5rem;
+				flex-direction: column;
+				max-width: 300px;
+				background-color: rgba(0, 0, 0, 0.5);
+				color: gray;
+				text-decoration: none;
+				border: 1.5px solid white;
+				&:hover {
+					background-color: rgba(0, 0, 0, 0.9);
+				}
+				.gallery-image {
+					border-radius: 1rem;
+					border: 2px solid gray;
+					display: block;
+					margin: auto;
+				}
+				.gallery-title {
+					text-align: center;
+					padding: 0.5rem;
+				}
+				.gallery-description {
+					padding-top: 0.5rem;
+					overflow: hidden;
+					white-space: nowrap;
+					text-overflow: ellipsis;
+					max-width: 300px;
+				}	
+			}
+		}
+	}
+}
+
