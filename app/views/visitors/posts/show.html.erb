@@ -1,3 +1,10 @@
+<% set_meta_tags \
+	og: { \
+		title: @post.title, \
+		description: @post.description, \
+		image: url_for(@post.header_image), \
+	} \
+%>
 <%= link_to posts_index_path, class: 'if_i_take_one_more_step_it_ll_be_the_farthest_away_from_home_you_have_ever_been' do %> 
 	<%= svg_icon("go_back") %>
 <% end %>
