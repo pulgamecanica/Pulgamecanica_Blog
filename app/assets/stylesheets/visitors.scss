@@ -746,3 +746,12 @@ body {
 		}
 	}
 }
+.loading-indicator {
+	padding: 4rem;
+	img {
+		width: 50px;
+	}
+}
+.hidden {
+	display: none;
+}

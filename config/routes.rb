@@ -39,10 +39,14 @@ Rails.application.routes.draw do
     root "posts#index"
     match "/404", :to => "errors#not_found", :via => :all
     match "/500", :to => "errors#internal_server_error", :via => :all
+    get 'home/cv'
     get 'home/about'
     get 'home/projects'
-    get 'home/cv'
     get 'posts/index'
+
+    get 'filter_tags', to: 'tags#index', as: 'filter_tags'
+    get 'filter_tags/:id', to: 'tags#show', as: 'filter_tag'
+
     get 'posts/:id', to: 'posts#show', as: "posts_show"  
   end
 end

@@ -1,0 +1,47 @@
+<%= turbo_frame_tag :details, class: "middle-earth-container" do %>
+  <div class="edoras">
+    <span class="saddle" style="background-color: <%= @tag.color %>;">
+        <%= @tag.title %><%= @tag.icon_svg.html_safe %>
+    </span>
+  </div>
+  <div class="mordor">
+    <% if not @posts.nil?%>
+      <h4 class="if_i_take_one_more_step_it_ll_be_the_farthest_away_from_home_you_have_ever_been"><%= @posts.length %> posts founded</h4>
+      <% if @posts.any?%> 
+        <div class="shire mordor">
+          <div class="minas-morgul bg-light">
+            <% @posts.each do |post| %>
+              <%= link_to post_path(post), data: { turbo: "false" } do%>
+                <% if post.header_image.present? %>
+                  <div class="sword" style="background-image: url(<%= url_for(post.header_image) %>);" ></div>
+                <% else %>
+                  <div class="axe" style="background-image: url(<%= url_for(post.header_image) %>);" ></div>
+                <% end %>
+                <aside class="axe">
+                  <%= post.title %>
+                </aside>
+                <span class="arkenstone shield">
+                  <%= post.description.truncate(75) %>
+                </span>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+
+
+
+    <% if not @projects.nil? %>
+      <h4 class="if_i_take_one_more_step_it_ll_be_the_farthest_away_from_home_you_have_ever_been"><%= @projects.length %> projects founded</h4>
+      <% if @projects.any?%>
+        <div class="shire mordor">
+          <% @projects.each do |project| %>
+            <%= render 'project', project: project %>
+          <% end %>
+          </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+

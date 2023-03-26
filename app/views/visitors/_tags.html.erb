@@ -1,7 +1,7 @@
 <div class="edoras">
   <% element.tags.each do |tag| %>
-    <span class="saddle" style="background-color: <%= tag.color %>;">
+    <%= link_to filter_tags_path, {class: "saddle", style: "background-color: " +  tag.color} do %>
       <%= tag.title %><%= tag.icon_svg.html_safe %>
-    </span>
+    <% end %>
   <% end %>
 </div>

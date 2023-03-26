@@ -1,9 +1,19 @@
 <h6 class="breadcrumb"><%= link_to 'HOME', root_path %> / <span class="light-text">BLOG</span></h6>
 <div class="middle-earth-container">
+  <% if not @posts.any? %>
+    <div class="mordor center">
+      <h2 style="max-height: 40vh;">
+        Projects not available right now
+      </h2> 
+      <p>
+        <%= image_tag(asset_path("cello.gif")) %>
+      </p>
+    </div>
+  <% end %>
   <% @posts.each do |post| %>
     <%= link_to posts_show_path(post) do %>
      <%= render 'post_preview', post: post %>
      <span class="book-of-mazarbul"><p><%= svg_icon("book-of-mazarbul") %></p></span>
     <% end %>
-<% end %>
+  <% end %>
 </div>

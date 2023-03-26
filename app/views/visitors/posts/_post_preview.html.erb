@@ -2,7 +2,7 @@
   <div class="argonath-column bree">
     <p class="ent-draught silmaril"><%= post.title %></p>
     <div class="bywater">
-      <p class="petty-dwarf-roots arkenstone"><%= post.published_at.strftime("%d %b %Y") %></p>
+      <p class="petty-dwarf-roots arkenstone"><%= time_ago_in_words(post.published_at) %></p>
       <p class="petty-dwarf-roots arkenstone">
         <%= svg_icon("updated") %>
         <%= post.updated_at.strftime("%Y %m") %>  
@@ -18,8 +18,9 @@
       <div class="sword icon-svg-md"><%= svg_icon("no_image") %></div>
     <% end %>
   </div>
-
+  <%= render 'tags', element: post %>
   <div class="argonath-column moria">
     <p class="side-description silmaril"><%= post.description %></p>
   </div>
+  
 </div>

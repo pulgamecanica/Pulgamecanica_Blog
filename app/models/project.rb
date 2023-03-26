@@ -13,4 +13,7 @@ class Project < ApplicationRecord
   validates :description, length: { in: 15..650 }
   validates :rank, numericality: { in: 0..5 }
 
+  scope :published_projects, -> do
+    where(published: true).order(published_at: :desc)
+  end
 end
