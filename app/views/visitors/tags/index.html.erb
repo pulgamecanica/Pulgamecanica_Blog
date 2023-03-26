@@ -2,7 +2,7 @@
 	data-action="
 	turbo:before-fetch-request@document->filter#displayLoading
 	turbo:before-fetch-response@document->filter#displayContent">
-	<%= turbo_frame_tag :index, class: "moria" do %>
+	<%= turbo_frame_tag :index, class: "moria shire" do %>
 		<% @tags.each do |tag| %>
 			<%= link_to filter_tag_path(tag), class: "edoras", "data-turbo-frame": "details" do %>
 			<span class="saddle" style="background-color: <%= tag.color %>;">
