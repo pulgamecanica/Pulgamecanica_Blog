@@ -12,7 +12,7 @@ module Visitors
     end
 
     def index
-      @tags = Tag.left_outer_joins(:posts, :projects).distinct.where(posts: {published: false}).or(Tag.left_outer_joins(:posts, :projects).distinct.where(projects: {published: false}))
+      @tags = Tag.left_outer_joins(:posts, :projects).distinct.where(posts: {published: true}).or(Tag.left_outer_joins(:posts, :projects).distinct.where(projects: {published: true}))
     end
 
     private
