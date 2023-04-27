@@ -6,7 +6,7 @@ module Authors
 
     # POST /projects or /projects.json
     def index
-      @projects = @author.projects
+      @projects = @author.projects.order(updated_at: :desc)
     end
 
     # GET /projects/1 or /projects/1.json

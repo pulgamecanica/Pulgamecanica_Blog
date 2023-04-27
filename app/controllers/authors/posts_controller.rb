@@ -66,7 +66,7 @@ module Authors
 
     # GET /posts or /posts.json
     def index
-      @posts = @author.posts
+      @posts = @author.posts.order(updated_at: :desc)
     end
 
     # GET /posts/new

@@ -42,6 +42,9 @@
     }
     .row {
         width: 100%;
+        .col-md-1 {
+            flex-basis: min-content;
+        }
     }
     form svg {
         width: 32px;
