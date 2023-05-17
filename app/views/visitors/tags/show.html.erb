@@ -5,7 +5,7 @@
     </span>
   </div>
   <div class="mordor">
-    <% if not @posts.nil?%>
+    <% if @posts.any?%>
       <h4 class="if_i_take_one_more_step_it_ll_be_the_farthest_away_from_home_you_have_ever_been" style="background-color: <%= @tag.color %>;"><%= @posts.length %> posts founded</h4>
       <% if @posts.any?%>
         <div class="shire mordor bg-light">
@@ -27,7 +27,7 @@
         </div>
       <% end %>
     <% end %>
-    <% if not @projects.nil? %>
+    <% if @projects.any? %>
       <h4 class="if_i_take_one_more_step_it_ll_be_the_farthest_away_from_home_you_have_ever_been" style="background-color: <%= @tag.color %>;"><%= @projects.length %> projects founded</h4>
       <% if @projects.any?%>
         <div class="shire mordor">

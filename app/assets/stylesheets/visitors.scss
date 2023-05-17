@@ -59,12 +59,50 @@
    src: url('CormorantGaramond-Thin.ttf');
 }
 
+* {
+	box-sizing: border-box;
+}
+
 body {
 	margin: 0;
 	padding: 0;
 	min-height: 90vh;
 }
 
+:root {
+	--angle: 90deg;
+	--c1: rgba(255, 215, 0, 1);
+	--c2: rgba(255, 215, 0, 0.1);
+}
+
+.box {
+	border: 2px solid;
+	padding: 5px;
+	border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 30;
+	animation: hide 0s linear 5s forwards, borderRotate 1s linear 5 forwards;
+	background-image: url(asset_path("glitter.gif"));
+	background-position: bottom;
+	background-repeat: no-repeat;
+}
+
+@keyframes hide {
+	to {
+		border: none;
+	}
+}
+@keyframes borderRotate {
+	0% { --angle: 0deg}
+	10% { --angle: 30deg}
+	20% { --angle: 60deg}
+	30% { --angle: 90deg}
+	40% { --angle: 120deg}
+	50% { --angle: 180deg}
+	60% { --angle: 220deg}
+	70% { --angle: 260deg}
+	80% { --angle: 290deg}
+	90% { --angle: 320deg}
+	100% {--angle: 360deg;}
+}
 
 .bg-light {
 	background-color: rgb(248,249,250);
@@ -80,6 +118,39 @@ body {
 .trix-content {
 	width: 100%;
 	word-break: break-word;
+}
+
+.hobbit-svg, .dwarf-svg, .men-svg, .elf-svg {
+	&.active {
+		background-color: rgba(0, 0, 0, 0.2);
+	}
+	background-color: transparent;
+	border: none;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	&:hover {
+		background-color: rgba(0, 0, 0, 0.1);
+	}
+}
+
+.hobbit-svg svg {
+	width: 15px;
+	height: 15px;
+}
+
+.dwarf-svg svg {
+	width: 30px;
+	height: 30px;
+}
+
+.men-svg svg {
+	width: 50px;
+	height: 50px;
+}
+
+.elf-svg svg {
+	width: 100px;
+	height: 100px;
 }
 
 #visitors-layout {
@@ -356,6 +427,30 @@ body {
 						}
 					}
 				}
+				@media screen and (min-width: 900px) {
+					.helcaraxe {
+						.shire, .argonath-column .sword, .argonath-column .axe {
+							width: 50vw;
+						}
+						.petty-dwarf-roots, .side-description {
+							font-size: 30px;
+						}
+						.ent-draught {
+							font-size: 75px;
+						}
+					}
+					.utumno {
+						.shire, .argonath-column .sword, .argonath-column .axe {
+							width: 15vw;
+						}
+						.petty-dwarf-roots, .side-description {
+							font-size: 20px !important;
+						}
+						.ent-draught {
+							font-size: 30px;
+						}
+					}
+				}
 				/* Flex Columns */
 				.argonath-column {
 					margin: 0;
@@ -363,7 +458,6 @@ body {
 					/* BACKGROUND IMAGE */
 					.sword, .axe {
 						text-align: center;
-						width: 50vw;
 						background-size: cover;
          			background-position: center;
          			border-radius: 1rem;
@@ -382,8 +476,17 @@ body {
 					text-decoration: 3px underline;
 				}
 				/* Container Flex Templates */
-				.shire, .bywater, .moria, .rohan, .mirkwood, .gondor {
-					display: flex;
+				@media screen and (min-width: 900px) {
+					.valinior, .shire, .bywater, .moria, .rohan, .mirkwood, .gondor {
+						display: flex;
+						flex-wrap: wrap;
+					}
+					.valinior.utumno {
+						max-width: 80%;
+						justify-content: center;
+						align-items: start;
+						gap: 3rem;
+					}
 				}
 				/* SHIRE */
 				/*  ___________ */
@@ -394,7 +497,7 @@ body {
 				.shire {
 	    			justify-content: flex-start;
 	    			flex-wrap: wrap;
-	    			margin-top: 3rem;
+	    			margin-top: 1rem;
 	    			border-radius: 1rem;
 				}
 				/* BYWATER */
@@ -661,6 +764,9 @@ body {
 }
 
 @media screen and (max-width: 900px) {
+	#grid-controller {
+		display: none;
+	}
 	#visitors-layout {
 		> nav {
 			display: none;

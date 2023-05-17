@@ -1,5 +1,11 @@
-<h6 class="breadcrumb"><%= link_to 'HOME', root_path %> / <span class="light-text">BLOG</span></h6>
 <div class="middle-earth-container">
+  <div class="bywater">
+    <h6 class="breadcrumb"><%= link_to 'HOME', root_path %> / <span class="light-text">BLOG</span></h6>
+    <span data-controller="grid" id="grid-controller" class="box">
+      <button data-action="click->grid#one_per_line" class="dwarf-svg active"><%= svg_icon("grid-horizontal") %></button>
+      <button data-action="click->grid#multiple" class="dwarf-svg"><%= svg_icon("grid-square") %></button>
+    </span>
+  </div>
   <% if not @posts.any? %>
     <div class="mordor center">
       <h2 style="max-height: 40vh;">
@@ -9,11 +15,13 @@
         <%= image_tag(asset_path("cello.gif")) %>
       </p>
     </div>
-  <% end %>
-  <% @posts.each do |post| %>
-    <%= link_to posts_show_path(post) do %>
-     <%= render 'post_preview', post: post %>
-     <span class="book-of-mazarbul"><p><%= svg_icon("book-of-mazarbul") %></p></span>
-    <% end %>
+  <% else %>
+      <div class="valinior helcaraxe" id="posts-grid">
+      <% @posts.each do |post| %>
+          <%= link_to posts_show_path(post) do %>
+            <%= render 'post_preview', post: post %>
+          <% end %>
+      <% end %>
+      </div>
   <% end %>
 </div>
