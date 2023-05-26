@@ -70,38 +70,20 @@ body {
 }
 
 :root {
-	--angle: 90deg;
-	--c1: rgba(255, 215, 0, 1);
-	--c2: rgba(255, 215, 0, 0.1);
+	--dark: #121212;
 }
 
 .box {
-	border: 2px solid;
-	padding: 5px;
-	border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 30;
-	animation: hide 0s linear 5s forwards, borderRotate 1s linear 5 forwards;
 	background-image: url(asset_path("glitter.gif"));
 	background-position: bottom;
 	background-repeat: no-repeat;
-}
-
-@keyframes hide {
-	to {
-		border: none;
+	svg * {
+		stroke: var(--dark);
 	}
 }
-@keyframes borderRotate {
-	0% { --angle: 0deg}
-	10% { --angle: 30deg}
-	20% { --angle: 60deg}
-	30% { --angle: 90deg}
-	40% { --angle: 120deg}
-	50% { --angle: 180deg}
-	60% { --angle: 220deg}
-	70% { --angle: 260deg}
-	80% { --angle: 290deg}
-	90% { --angle: 320deg}
-	100% {--angle: 360deg;}
+
+.pb-1 {
+	padding-bottom: 0.5rem;
 }
 
 .bg-light {
@@ -109,7 +91,7 @@ body {
 }
 
 .bg-dark {
-	background-color: #121212;
+	background-color: var(--dark);
 }
 
 .bg-silver {
@@ -134,23 +116,23 @@ body {
 }
 
 .hobbit-svg svg {
-	width: 15px;
-	height: 15px;
+	width: 15px !important;
+	height: 15px !important;
 }
 
 .dwarf-svg svg {
-	width: 30px;
-	height: 30px;
+	width: 36px !important;
+	height: 36px !important;
 }
 
 .men-svg svg {
-	width: 50px;
-	height: 50px;
+	width: 50px !important;
+	height: 50px !important;
 }
 
 .elf-svg svg {
-	width: 100px;
-	height: 100px;
+	width: 100px !important;
+	height: 100px !important;
 }
 
 #visitors-layout {
@@ -277,7 +259,7 @@ body {
 		min-height: 100%;
 		margin-left: 25vw; // margin-left 0 FOR PHONE
 		padding: 1rem;
-		> nav {
+		> #main-nav-bar {
 			transition: top 0.3s;
 			// box-shadow: 1px 2px 3px 0 #888888;
 			-webkit-box-shadow: 0 8px 6px -6px lightgray;
@@ -294,6 +276,13 @@ body {
 				justify-content: start;
 				align-items: center;
 				height: 100%;
+				#search-input {
+					display: none;
+					width: 95%;
+					height: 95%;
+					font-size: 2.5rem;
+					border: none;
+				}
 				button {
 					background-color: transparent;
 					border: none;
@@ -433,7 +422,7 @@ body {
 							width: 50vw;
 						}
 						.petty-dwarf-roots, .side-description {
-							font-size: 30px;
+							font-size: 20px;
 						}
 						.ent-draught {
 							font-size: 75px;

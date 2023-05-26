@@ -1,11 +1,11 @@
  <div class="shire">
   <div class="argonath-column bree">
     <p class="ent-draught silmaril"><%= post.title %></p>
-    <div class="bywater">
+    <div class="bywater pb-1">
       <p class="petty-dwarf-roots arkenstone"><%= time_ago_in_words(post.published_at) %></p>
-      <p class="petty-dwarf-roots arkenstone">
+      <p class="petty-dwarf-roots arkenstone hobbit-svg">
+        <%= post.updated_at.strftime("%Y %m") %>
         <%= svg_icon("updated") %>
-        <%= post.updated_at.strftime("%Y %m") %>  
       </p>
     </div>
     <% if post.header_image.present? %>
