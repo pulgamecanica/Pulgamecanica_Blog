@@ -1,0 +1,18 @@
+<script>hljs.highlightAll();</script>
+
+<div class="row m-auto" id="markdown-editable">
+  <div class="col-md-12">
+    <div class="card text-center">
+      <div class="card-header">
+        <% if page.published %>
+          <h5 class="card-title mb-0"><%= lead %><button class="float-right btn btn-primary btn-sm mt-1 me-1" id="pagePublishedStatus">Published <%= time_ago_in_words(page.published_at) %> ago</button></h5>
+        <% else %>
+          <h5 class="card-title mb-0"><%= lead %><button class="float-right btn btn-secondary btn-sm mt-1 me-1" id="pagePublishedStatus">Unpublished</button></h5>
+        <% end %>
+      </div>
+      <div class="card-body">
+        <%= render "form", page: page %>
+      </div>
+    </div>
+  </div>  
+</div>

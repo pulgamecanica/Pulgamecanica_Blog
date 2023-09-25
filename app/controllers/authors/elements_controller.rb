@@ -1,6 +1,6 @@
 module Authors
   class ElementsController < PostsController
-    # protect_from_forgery
+    protect_from_forgery
     before_action :set_author
     before_action :set_post
     before_action :set_element, only: %i[ update destroy ]

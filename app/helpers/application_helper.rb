@@ -16,4 +16,36 @@ module ApplicationHelper
 			file_data.html_safe
 		end
   end
+  
+	class RenderWithoutCode < Redcarpet::Render::HTML
+    def codespan(code)
+    	return if not code
+      langs = ["c", "c++", "rb", "json", "py", "js"]
+      code_lines = code.lines
+      lang = code_lines.first.strip
+      if (code_lines.length <= 1)
+      	return "<code class=\"bg-peach p-1 rounded\">#{lang}</code>"
+      end
+      code_lines.shift if langs.include? lang or lang == ""
+      result = "<pre><code#{" class=\"language-#{lang}\"" if langs.include? lang}>"
+      result += code_lines.join("")
+      result += "</code></pre>"
+    end
+
+    def block_quote(quote)
+    	"<blockquote>#{quote}</blockquote>"
+  	end
+
+  	def table(header, body)
+  		"<table class=\"table table-striped table-hover\"><thead>#{header}</thead><tbody>#{body}</tbody></table>"
+  	end
+  end
+  
+  def markdown(text)
+  	return if text.nil?
+    options = {hard_wrap: true, fenced_code_blocks: true, autolink: true, no_intra_emphasis: true, strikethrough: true, underline: true, footnotes: true, superscript:  true, autolink: true, tables: true}
+    markdown = Redcarpet::Markdown.new(RenderWithoutCode, options)
+    markdown.render(text).html_safe
+  end
+  
 end

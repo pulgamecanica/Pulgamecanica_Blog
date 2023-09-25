@@ -30,6 +30,9 @@ Rails.application.routes.draw do
     resources :projects,  only: [:index, :new, :create, :edit, :update, :destroy] do
       resources :references, only: [:create, :destroy]
     end
+    # PAGES
+    resources :pages, only: [:index, :new, :create, :edit, :update, :destroy]
+
     # TAGS
     resources :tags, only: [:index, :create, :update, :destroy]
   end

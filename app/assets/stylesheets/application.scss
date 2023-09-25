@@ -40,15 +40,30 @@
             transform: none;
         }
     }
+    .float-right {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
     .row {
         width: 100%;
         .col-md-1 {
             flex-basis: min-content;
         }
     }
-    form svg {
-        width: 32px;
-        height: 32px;
+    form {
+        .title {
+            width: 50%;
+            margin: auto;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        svg {
+            width: 32px;
+            height: 32px;
+        }
     }
     .paragraph {
         transition: background-color 0.5s ease;
@@ -149,6 +164,12 @@
             animation: none;
             background-color: rgba(180, 230, 70, 1);
         }
+    }
+    .edit-markdown-area {
+        min-height: 50vh;
+    }
+    .bi-markdown-fill {
+        fill: var(--bs-primary);
     }
 }
 

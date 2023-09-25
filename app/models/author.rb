@@ -5,6 +5,7 @@ class Author < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :posts
   has_many :projects
+  has_many :pages
 
   validates :bg_choice, numericality: { in: 1..10 }
 end

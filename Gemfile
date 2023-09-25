@@ -82,3 +82,6 @@ gem 'friendly_id', '~> 5.4.0'
 gem 'active_analytics'
 
 gem "meta-tags", "~> 2.18"
+
+# For Markdown support ---> https://github.com/vmg/redcarpet
+gem "redcarpet"

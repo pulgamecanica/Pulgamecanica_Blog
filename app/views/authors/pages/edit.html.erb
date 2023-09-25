@@ -1,0 +1,22 @@
+<div class="d-flex justify-content-between icon-svg-sm" data-controller="markdown">
+	<%= link_to 'Back', pages_path, class: 'btn btn-lg btn-dark m-3' %>
+	<button class="btn m-auto me-3 p-0" data-action="click->markdown#togglePreview">
+		<%= svg_icon("md") %></button>
+</div>
+
+<%= render "page", page: @page, lead: "Edit Page" %>
+
+<div class="row m-auto" id="markdown-preview">
+	<div class="col-md-12">
+		<div class="card">    
+			<div class="card-title text-center">
+				<h4 class="mt-2">Markdown Preview</h4>
+				<hr class="m-1">
+				<h2 class="mt-2"><%= @page.title %></h2>
+			</div>
+			<div class="card-body text-left markdown p-3 m-0">
+				<%= markdown(@page.body) %>
+			</div>  
+		</div>
+	</div>
+</div>

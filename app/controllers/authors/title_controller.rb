@@ -1,6 +1,6 @@
 module Authors
   class TitleController < AuthorsController
-  	# protect_from_forgery
+  	protect_from_forgery
     # before_action :set_post
     before_action :set_element
 

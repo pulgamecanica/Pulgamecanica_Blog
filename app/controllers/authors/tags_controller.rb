@@ -1,6 +1,6 @@
 module Authors
 	class TagsController < AuthorsController
-    # protect_from_forgery
+    protect_from_forgery
     before_action :set_author
     before_action :set_tag, only: %i[ update destroy ]
 

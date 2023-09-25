@@ -4,6 +4,7 @@ module Authors
     before_action :set_author
     before_action :set_post, only: %i[ edit update destroy publish unpublish sort_elements updateTags removeTag]
 
+    # POST /posts/1/sort_elements
     def sort_elements
       elements_sort = JSON.parse(request.body.read());
       elements_sort.each do |element|
@@ -12,6 +13,7 @@ module Authors
       render json: {"foo": {"bar": 1, "baz": 2}, "bat": [0, 1, 2]}
     end
 
+    # POST /posts/1/unpublish
     def publish
       @post.update(published: true, published_at: Time.now)
       respond_to do |format|
@@ -25,6 +27,7 @@ module Authors
       end
     end
 
+    # POST /posts/1/unpublish
     def unpublish
       @post.update(published: false, published_at: nil)    
       respond_to do |format|

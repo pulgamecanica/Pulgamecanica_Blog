@@ -1,0 +1,31 @@
+<h1 class="d-flex justify-content-between p-3">
+  <span>Pages</span>
+  <%= link_to 'New Page', new_page_path, class: 'btn btn-lg btn-primary'%>
+</h1>
+<div class="container">
+  <% @pages.each do |page| %>
+    <%= link_to edit_page_path(page), class: 'text-decoration-none' do %>
+      <div class="card post-card mb-2">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-10">
+                <h5 class="card-title mt-2 text-dark"><%= page.title %></h5>
+              </div>
+              <div class="col-md-2">
+               <!--  <div class="row m-2 gap-2 justify-content-end">
+                  < page.tags.each do |tag| >
+                    <span class="p-2 col-auto rounded text-dark" style="background-color: <%= tag.color %>;"><span style="margin-right: 0.5rem;"><%= tag.title %></span><span class="label label-default icon-svg-xs"><%= tag.icon_svg.html_safe %></span></span>
+                  < end >
+                </div> -->
+                <% if page.published? %>
+                  <span class="badge badge-primary bg-primary"> Published</span>
+                <% elsif %>
+                  <span class="badge badge-secondary bg-secondary"> Unpublished</span>
+                <% end %>
+              </div>
+            </div>
+          </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

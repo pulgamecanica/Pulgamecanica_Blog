@@ -1,5 +1,6 @@
 module Authors
 	class ReferencesController < ProjectsController
+    protect_from_forgery
 		before_action :set_author
     before_action :set_project
     before_action :set_references, only: %i[ destroy ]

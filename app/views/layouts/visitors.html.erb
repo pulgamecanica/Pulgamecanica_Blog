@@ -57,6 +57,12 @@ One ring to rule them all, one ring to find them, One ring to bring them all, an
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <!-- For Markdown Support -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <!-- End of Markdown Support -->
     <link rel="icon" type="image/x-icon" href="<%= asset_path('author_img.ico')%>">
   </head>
 
