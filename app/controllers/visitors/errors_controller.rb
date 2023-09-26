@@ -1,5 +1,6 @@
 module Visitors
   class ErrorsController < VisitorsController
+    protect_from_forgery
     layout 'errors'
 
     def not_found

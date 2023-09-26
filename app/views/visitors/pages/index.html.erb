@@ -1,0 +1,11 @@
+<h6 class="breadcrumb"><%= link_to 'HOME', root_path %> / <span class="light-text">pulga_pages</span></h6>
+
+<div class="middle-earth-container">
+	<div class="mordor center">
+		<%= @pages.count %> published Pages
+		<hr>
+		<% @pages.each do |page| %>
+			<button class="petty-dwarf-roots"><span class="p-3"><%= link_to page.title, pulga_pages_show_path(page) %></span></button>
+		<% end %>
+	</div>
+</div>

@@ -1,0 +1,5 @@
+<script>hljs.highlightAll();</script>
+<h6 class="breadcrumb"><%= link_to 'HOME', root_path %> / <%= link_to 'pulga pages', pulga_pages_index_path %> / <span class="light-text"><%= @page.title %></span></h6>
+<div class="markdown">
+	<%= markdown(@page.body) %>
+</div>

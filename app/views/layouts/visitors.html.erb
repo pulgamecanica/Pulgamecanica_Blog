@@ -78,10 +78,11 @@ One ring to rule them all, one ring to find them, One ring to bring them all, an
         <h6>Coding Blog</h6>
       </header>
       <section>
-          <h4><%= link_to 'About', about_path %></h4>
           <h4><%= link_to 'Blog', root_path %></h4>
           <h4><%= link_to 'Projects', showcase_path %></h4>
-          <h4><%= link_to 'CV', cv_path %></h4>
+          <% @pages.each do |page| %>
+            <h4><%= link_to page.title, pulga_pages_show_path(page) %></h4>
+          <% end %>
       </section>
       <footer>
         <a class="dwarf-svg" href="https://github.com/pulgamecanica" target="blank"><%= svg_icon("github") %></a>

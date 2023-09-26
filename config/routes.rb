@@ -39,18 +39,25 @@ Rails.application.routes.draw do
   
   # Visitors
   scope module: 'visitors' do
+    # POSTS
     root "posts#index"
+    get "posts/index"
+    get 'posts/:id', to: 'posts#show', as: "posts_show"
+
+    # ERRORS
     match "/404", :to => "errors#not_found", :via => :all
     match "/500", :to => "errors#internal_server_error", :via => :all
-    get 'cv', to: "home#cv"
-    get 'about', to: "home#about"
-    get 'showcase', to: "home#projects"
-    get 'stats', to: "home#stats"
-    get 'posts/index'
 
+    # PROJECTS
+    get 'showcase', to: "home#projects"
+
+    #PAGES
+    get 'pulga_pages/', to: 'pages#index', as: "pulga_pages_index"
+    get 'pulga_pages/:id', to: 'pages#show', as: "pulga_pages_show"
+
+    # TAGS 
     get 'filter_tags', to: 'tags#index', as: 'filter_tags'
     get 'filter_tags/:id', to: 'tags#show', as: 'filter_tag'
 
-    get 'posts/:id', to: 'posts#show', as: "posts_show"  
   end
 end
