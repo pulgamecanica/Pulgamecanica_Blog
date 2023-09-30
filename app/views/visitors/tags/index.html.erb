@@ -5,21 +5,17 @@
 	<%= turbo_frame_tag :index, class: "moria shire" do %>
 		<% @tags.each do |tag| %>
 			<%= link_to filter_tag_path(tag), class: "edoras", "data-turbo-frame": "details" do %>
-			<span class="saddle" style="background-color: <%= tag.color %>;">
-				<%= tag.title %><%= tag.icon_svg.html_safe %>
-			</span>
+				<span class="saddle" style="background-color: <%= tag.color %>;">
+					<%= tag.title %><%= tag.icon_svg.html_safe %>
+				</span>
 		  <% end %>
 		<% end %>
 	<% end %>
 	<hr>
 	<%= turbo_frame_tag :details, class: "", "data-filter-target": "content" do %>
 	    <div class="mordor center">
-	      <h2 style="max-height: 40vh;">
-	      	Welcome, please select any tag...
-	      </h2> 
-	      <p>
-	        <%= image_tag(asset_path("cello.gif")) %>
-	      </p>
+	      <h2 style="max-height: 40vh;">Welcome, please select any tag...</h2>
+	      <p><%= image_tag(asset_path("cello.gif")) %></p>
 	    </div>
 	<% end %>
 	<div class="mordor loading-indicator hidden"

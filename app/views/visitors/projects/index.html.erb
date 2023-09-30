@@ -2,12 +2,8 @@
 <div class="middle-earth-container">
   <% if not @projects.any? %>
   <div class="mordor center">
-    <h2 style="max-height: 40vh;">
-      No Projects Founded
-    </h2>
-    <p>
-      <%= image_tag(asset_path("cello.gif")) %>
-    </p>
+    <h2 style="max-height: 40vh;">No Projects Founded</h2>
+    <p><%= image_tag(asset_path("cello.gif")) %></p>
   </div>
   <% end %>
   <div class="shire mordor">

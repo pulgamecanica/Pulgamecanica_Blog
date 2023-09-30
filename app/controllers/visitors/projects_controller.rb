@@ -1,9 +1,8 @@
 module Visitors
-  class HomeController < VisitorsController
+  class ProjectsController < VisitorsController
     protect_from_forgery
     
-    def projects
-      #render html: "<h1>Hello</h1>".html_safe
+    def index
       @projects = Project.all.where(published: true).order(updated_at: :desc)
     end
   end

@@ -74,9 +74,9 @@ body {
 }
 
 .box {
-	background-image: url(asset_path("glitter.gif"));
-	background-position: bottom;
-	background-repeat: no-repeat;
+	// background-image: url(asset_path("glitter.gif"));
+	// background-position: bottom;
+	// background-repeat: no-repeat;
 	svg * {
 		stroke: var(--dark);
 	}

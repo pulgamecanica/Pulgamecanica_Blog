@@ -91,5 +91,23 @@
 				<% end %>
 			</div>
 		</div>
+		<div class="col-auto mb-4">
+			<div class="card icon-svg-md pt-2" style="width: 18rem; align-items: center;">
+          		<%= svg_icon("blog") %>
+				<div class="card-body text-center">
+					<h4 class="card-title">Pages</h4>
+					<h5 class="card-text"><%= @pages.count %> tags</h5>
+					<% @pages.order(:title).limit(5).each do |page| %>
+						<hr>
+						<%= link_to edit_page_path(page), class: 'text-decoration-none btn-light btn btn-block' do %>
+							<h6><%= page.title %></h6>
+						<% end %>
+					<% end %>
+				</div>
+				<%= link_to pages_path, class: 'text-decoration-none btn-primary text-center rounded btn-block' do %>
+					<h5>Index</h5>
+				<% end %>
+			</div>
+		</div>
 	</div>
 </div>

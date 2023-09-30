@@ -49,7 +49,7 @@ Rails.application.routes.draw do
     match "/500", :to => "errors#internal_server_error", :via => :all
 
     # PROJECTS
-    get 'showcase', to: "home#projects"
+    get 'showcase', to: "projects#index"
 
     #PAGES
     get 'pulga_pages/', to: 'pages#index', as: "pulga_pages_index"

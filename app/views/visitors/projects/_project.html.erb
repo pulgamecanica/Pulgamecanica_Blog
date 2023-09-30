@@ -1,11 +1,7 @@
 <div class="dialog" data-controller="dialog" data-dialog-name-id="project-<%= project.id %>">
   <span class="dialog-bait" data-action="click->dialog#showDialog">
     <div class="minas-morgul bg-light">
-      <% if project.background_image.present? %>
-        <div class="sword" style="background-image: url(<%= url_for(project.background_image) %>);"></div>
-      <% else %>
-        <div class="sword" style="background-image: url(<%= asset_path("cat2.gif") %>);"></div>
-      <% end %>
+      <div class="sword" style="background-image: url(<%= project.background_image.present? ? url_for(project.background_image) : asset_path("cat2.gif") %>);"></div>
       <aside class="axe">
         <%= project.title %>
       </aside>
@@ -24,11 +20,7 @@
   <div class="dialog-body" id="project-<%= project.id %>">
     <div class="sauron">
       <span class="mount-doom" data-action="click->dialog#hideDialog"><%= svg_icon("close") %></span>
-      <% if project.background_image.present? %>
-        <div class="sword" style="background-image: url(<%= url_for(project.background_image) %>);"></div>
-      <% else %>
-        <div class="sword" style="background-image: url(<%= asset_path("cat2.gif") %>);"></div>
-      <% end %>
+      <div class="sword" style="background-image: url(<%= project.background_image.present? ? url_for(project.background_image) : asset_path("cat2.gif") %>);"></div>
       <div class="north-downs">
         <%= render 'tags', element: project %>
       </div>
@@ -43,9 +35,7 @@
         <div class="thror">
           <a href="<%= project.link %>" target="blank"><%= svg_icon("github") %></a>
           <% project.references.each do |ref| %>
-          <a href="<%= ref.link %>" target="blank">
-            <%= ref.name %>
-          </a>
+            <a href="<%= ref.link %>" target="blank"><%= ref.name %></a>
           <% end %>
         </div>
       </div>

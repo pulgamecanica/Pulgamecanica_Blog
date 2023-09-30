@@ -7,6 +7,7 @@ class AuthorsController < ApplicationController
 		@posts = current_author.posts.where(published: true)
 		@projects = current_author.projects.where(published: true)
 		@tags = Tag.all
+		@pages = current_author.pages.where(published: true)
 	end
 
 	def update
