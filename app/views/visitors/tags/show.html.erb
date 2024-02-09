@@ -32,7 +32,7 @@
       <% if @projects.any?%>
         <div class="shire mordor">
           <% @projects.each do |project| %>
-            <%= render 'project', project: project %>
+            <%= render 'visitors/projects/project', project: project %>
           <% end %>
           </div>
       <% end %>
